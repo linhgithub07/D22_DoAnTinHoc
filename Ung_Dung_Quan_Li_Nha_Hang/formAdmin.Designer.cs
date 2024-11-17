@@ -64,6 +64,7 @@
             this.dvg_nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_Xem = new System.Windows.Forms.Button();
             this.btnXoaMonAn = new System.Windows.Forms.Button();
             this.btnSuaMonAn = new System.Windows.Forms.Button();
             this.btnThemMonAn = new System.Windows.Forms.Button();
@@ -94,21 +95,20 @@
             this.tabPageTaiKhoan = new System.Windows.Forms.TabPage();
             this.btnResetMK = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.txb_pass = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel28 = new System.Windows.Forms.Panel();
-            this.txbTenHienThi_tk = new System.Windows.Forms.TextBox();
+            this.txb_FullName = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.panel29 = new System.Windows.Forms.Panel();
             this.cbbLoai_tk = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.panel30 = new System.Windows.Forms.Panel();
-            this.txbTen_tk = new System.Windows.Forms.TextBox();
+            this.txb_TenTK = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panel31 = new System.Windows.Forms.Panel();
             this.dgv_AccountList = new System.Windows.Forms.DataGridView();
-            this.dgv_TenTaiKhoan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_TenHienThi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_MatKhau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_LoaiTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel32 = new System.Windows.Forms.Panel();
             this.btnXoaTaiKhoan = new System.Windows.Forms.Button();
             this.btnSuaTaiKhoan = new System.Windows.Forms.Button();
@@ -140,6 +140,7 @@
             this.panel25.SuspendLayout();
             this.tabPageTaiKhoan.SuspendLayout();
             this.panel26.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.panel28.SuspendLayout();
             this.panel29.SuspendLayout();
             this.panel30.SuspendLayout();
@@ -505,6 +506,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btn_Xem);
             this.panel4.Controls.Add(this.btnXoaMonAn);
             this.panel4.Controls.Add(this.btnSuaMonAn);
             this.panel4.Controls.Add(this.btnThemMonAn);
@@ -514,9 +516,20 @@
             this.panel4.Size = new System.Drawing.Size(454, 72);
             this.panel4.TabIndex = 0;
             // 
+            // btn_Xem
+            // 
+            this.btn_Xem.Location = new System.Drawing.Point(370, 8);
+            this.btn_Xem.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_Xem.Name = "btn_Xem";
+            this.btn_Xem.Size = new System.Drawing.Size(82, 58);
+            this.btn_Xem.TabIndex = 3;
+            this.btn_Xem.Text = "Xem";
+            this.btn_Xem.UseVisualStyleBackColor = true;
+            this.btn_Xem.Click += new System.EventHandler(this.btn_Xem_Click);
+            // 
             // btnXoaMonAn
             // 
-            this.btnXoaMonAn.Location = new System.Drawing.Point(335, 8);
+            this.btnXoaMonAn.Location = new System.Drawing.Point(247, 7);
             this.btnXoaMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaMonAn.Name = "btnXoaMonAn";
             this.btnXoaMonAn.Size = new System.Drawing.Size(82, 58);
@@ -527,7 +540,7 @@
             // 
             // btnSuaMonAn
             // 
-            this.btnSuaMonAn.Location = new System.Drawing.Point(193, 8);
+            this.btnSuaMonAn.Location = new System.Drawing.Point(129, 7);
             this.btnSuaMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaMonAn.Name = "btnSuaMonAn";
             this.btnSuaMonAn.Size = new System.Drawing.Size(82, 58);
@@ -538,7 +551,7 @@
             // 
             // btnThemMonAn
             // 
-            this.btnThemMonAn.Location = new System.Drawing.Point(42, 5);
+            this.btnThemMonAn.Location = new System.Drawing.Point(3, 5);
             this.btnThemMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemMonAn.Name = "btnThemMonAn";
             this.btnThemMonAn.Size = new System.Drawing.Size(82, 61);
@@ -805,6 +818,7 @@
             // 
             // panel26
             // 
+            this.panel26.Controls.Add(this.panel12);
             this.panel26.Controls.Add(this.panel28);
             this.panel26.Controls.Add(this.panel29);
             this.panel26.Controls.Add(this.panel30);
@@ -814,23 +828,56 @@
             this.panel26.Size = new System.Drawing.Size(373, 272);
             this.panel26.TabIndex = 10;
             // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.txb_pass);
+            this.panel12.Controls.Add(this.label8);
+            this.panel12.Location = new System.Drawing.Point(0, 87);
+            this.panel12.Margin = new System.Windows.Forms.Padding(2);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(369, 52);
+            this.panel12.TabIndex = 6;
+            // 
+            // txb_pass
+            // 
+            this.txb_pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_pass.Location = new System.Drawing.Point(142, 18);
+            this.txb_pass.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_pass.Name = "txb_pass";
+            this.txb_pass.Size = new System.Drawing.Size(224, 20);
+            this.txb_pass.TabIndex = 5;
+            this.txb_pass.Text = "123456";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label8.Location = new System.Drawing.Point(3, 14);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(105, 24);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Mật Khẩu";
+            // 
             // panel28
             // 
-            this.panel28.Controls.Add(this.txbTenHienThi_tk);
+            this.panel28.Controls.Add(this.txb_FullName);
             this.panel28.Controls.Add(this.label14);
-            this.panel28.Location = new System.Drawing.Point(3, 112);
+            this.panel28.Location = new System.Drawing.Point(2, 153);
             this.panel28.Margin = new System.Windows.Forms.Padding(2);
             this.panel28.Name = "panel28";
             this.panel28.Size = new System.Drawing.Size(369, 52);
             this.panel28.TabIndex = 1;
             // 
-            // txbTenHienThi_tk
+            // txb_FullName
             // 
-            this.txbTenHienThi_tk.Location = new System.Drawing.Point(142, 15);
-            this.txbTenHienThi_tk.Margin = new System.Windows.Forms.Padding(2);
-            this.txbTenHienThi_tk.Name = "txbTenHienThi_tk";
-            this.txbTenHienThi_tk.Size = new System.Drawing.Size(224, 20);
-            this.txbTenHienThi_tk.TabIndex = 6;
+            this.txb_FullName.Location = new System.Drawing.Point(142, 15);
+            this.txb_FullName.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_FullName.Name = "txb_FullName";
+            this.txb_FullName.Size = new System.Drawing.Size(224, 20);
+            this.txb_FullName.TabIndex = 6;
+            this.txb_FullName.Text = "Thế Linh";
             // 
             // label14
             // 
@@ -848,7 +895,7 @@
             // 
             this.panel29.Controls.Add(this.cbbLoai_tk);
             this.panel29.Controls.Add(this.label15);
-            this.panel29.Location = new System.Drawing.Point(3, 201);
+            this.panel29.Location = new System.Drawing.Point(2, 218);
             this.panel29.Margin = new System.Windows.Forms.Padding(2);
             this.panel29.Name = "panel29";
             this.panel29.Size = new System.Drawing.Size(369, 52);
@@ -861,6 +908,7 @@
             this.cbbLoai_tk.Name = "cbbLoai_tk";
             this.cbbLoai_tk.Size = new System.Drawing.Size(224, 21);
             this.cbbLoai_tk.TabIndex = 3;
+            this.cbbLoai_tk.Text = "admin";
             // 
             // label15
             // 
@@ -876,7 +924,7 @@
             // 
             // panel30
             // 
-            this.panel30.Controls.Add(this.txbTen_tk);
+            this.panel30.Controls.Add(this.txb_TenTK);
             this.panel30.Controls.Add(this.label16);
             this.panel30.Location = new System.Drawing.Point(2, 18);
             this.panel30.Margin = new System.Windows.Forms.Padding(2);
@@ -884,13 +932,14 @@
             this.panel30.Size = new System.Drawing.Size(369, 52);
             this.panel30.TabIndex = 0;
             // 
-            // txbTen_tk
+            // txb_TenTK
             // 
-            this.txbTen_tk.Location = new System.Drawing.Point(142, 18);
-            this.txbTen_tk.Margin = new System.Windows.Forms.Padding(2);
-            this.txbTen_tk.Name = "txbTen_tk";
-            this.txbTen_tk.Size = new System.Drawing.Size(224, 20);
-            this.txbTen_tk.TabIndex = 5;
+            this.txb_TenTK.Location = new System.Drawing.Point(142, 18);
+            this.txb_TenTK.Margin = new System.Windows.Forms.Padding(2);
+            this.txb_TenTK.Name = "txb_TenTK";
+            this.txb_TenTK.Size = new System.Drawing.Size(224, 20);
+            this.txb_TenTK.TabIndex = 5;
+            this.txb_TenTK.Text = "thelinh1";
             // 
             // label16
             // 
@@ -900,9 +949,9 @@
             this.label16.Location = new System.Drawing.Point(3, 14);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(82, 24);
+            this.label16.Size = new System.Drawing.Size(112, 24);
             this.label16.TabIndex = 0;
-            this.label16.Text = "Tên TK";
+            this.label16.Text = "Tài Khoản";
             // 
             // panel31
             // 
@@ -916,11 +965,6 @@
             // dgv_AccountList
             // 
             this.dgv_AccountList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_AccountList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgv_TenTaiKhoan,
-            this.dgv_TenHienThi,
-            this.dgv_MatKhau,
-            this.dgv_LoaiTK});
             this.dgv_AccountList.Location = new System.Drawing.Point(2, 2);
             this.dgv_AccountList.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_AccountList.Name = "dgv_AccountList";
@@ -928,27 +972,7 @@
             this.dgv_AccountList.RowTemplate.Height = 24;
             this.dgv_AccountList.Size = new System.Drawing.Size(455, 381);
             this.dgv_AccountList.TabIndex = 0;
-            // 
-            // dgv_TenTaiKhoan
-            // 
-            this.dgv_TenTaiKhoan.HeaderText = "Tên Tài Khoản";
-            this.dgv_TenTaiKhoan.Name = "dgv_TenTaiKhoan";
-            // 
-            // dgv_TenHienThi
-            // 
-            this.dgv_TenHienThi.HeaderText = "Tên Hiển Thị";
-            this.dgv_TenHienThi.Name = "dgv_TenHienThi";
-            // 
-            // dgv_MatKhau
-            // 
-            this.dgv_MatKhau.HeaderText = "Mật Khẩu";
-            this.dgv_MatKhau.Name = "dgv_MatKhau";
-            this.dgv_MatKhau.ToolTipText = "*";
-            // 
-            // dgv_LoaiTK
-            // 
-            this.dgv_LoaiTK.HeaderText = "Loại Tài Khoản";
-            this.dgv_LoaiTK.Name = "dgv_LoaiTK";
+            this.dgv_AccountList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_AccountList_CellClick_1);
             // 
             // panel32
             // 
@@ -970,6 +994,7 @@
             this.btnXoaTaiKhoan.TabIndex = 2;
             this.btnXoaTaiKhoan.Text = "Xóa";
             this.btnXoaTaiKhoan.UseVisualStyleBackColor = true;
+            this.btnXoaTaiKhoan.Click += new System.EventHandler(this.btnXoaTaiKhoan_Click);
             // 
             // btnSuaTaiKhoan
             // 
@@ -980,6 +1005,7 @@
             this.btnSuaTaiKhoan.TabIndex = 1;
             this.btnSuaTaiKhoan.Text = "Sửa";
             this.btnSuaTaiKhoan.UseVisualStyleBackColor = true;
+            this.btnSuaTaiKhoan.Click += new System.EventHandler(this.btnSuaTaiKhoan_Click);
             // 
             // btnThemTaiKhoan
             // 
@@ -1038,6 +1064,8 @@
             this.panel25.ResumeLayout(false);
             this.tabPageTaiKhoan.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();
             this.panel29.ResumeLayout(false);
@@ -1102,13 +1130,13 @@
         private System.Windows.Forms.Button btnThemBan;
         private System.Windows.Forms.Panel panel26;
         private System.Windows.Forms.Panel panel28;
-        private System.Windows.Forms.TextBox txbTenHienThi_tk;
+        private System.Windows.Forms.TextBox txb_FullName;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel29;
         private System.Windows.Forms.ComboBox cbbLoai_tk;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel30;
-        private System.Windows.Forms.TextBox txbTen_tk;
+        private System.Windows.Forms.TextBox txb_TenTK;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Panel panel31;
         private System.Windows.Forms.DataGridView dgv_AccountList;
@@ -1134,9 +1162,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TableNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TongTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TrangThai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TenTaiKhoan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TenHienThi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_MatKhau;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_LoaiTK;
+        private System.Windows.Forms.Button btn_Xem;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.TextBox txb_pass;
+        private System.Windows.Forms.Label label8;
     }
 }

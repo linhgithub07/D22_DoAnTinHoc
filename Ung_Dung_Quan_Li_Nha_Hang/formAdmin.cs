@@ -16,13 +16,11 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
     public partial class formAdmin : Form
     {
         private List<food> f = new List<food>();
-        private List<tk_mk> ll_tkmk; // ll = load list
+        private List<tk_mk> f_tkmk = new List<tk_mk>(); // ll = load list
         private int pt = -1;
         public formAdmin()
         {
             InitializeComponent();
-            // LoadFoodList(dgv_MonAn, f);
-           // LoadTable();
         }
 
 
@@ -35,14 +33,9 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         {
             pt = e.RowIndex;
             txt_ListFood.Text = f[pt].F_list;
-            txt_FoodID.Text = f[pt].F_id;
-            txt_FoodName.Text = f[pt].F_name;
-            txt_FoodPrice.Text = f[pt].F_price;
         }
         private void btnThemMonAn_Click(object sender, EventArgs e)
         {
-            // Phần lưu trữ món ăn vào file
-        //    string filePath = "DanhSachMonAn.bin";
             string list = txt_ListFood.Text;
             string id = txt_FoodID.Text;
             string name = txt_FoodName.Text;
@@ -91,9 +84,21 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 pt = -1;
             }
         }
+        private void btn_Xem_Click(object sender, EventArgs e)
+        {
+            LoadFoodList(dgv_MonAn, f);
+        }
         private void btnTimMonAn_Click(object sender, EventArgs e)
         {
-
+            List<food> srearch = new List<food>();
+            foreach (var item in f)
+            {
+                if (item.F_id.Contains(txbTimMonAn.Text))
+                {
+                    srearch.Add(item);
+                }    
+            }
+            LoadFoodList(dgv_MonAn,srearch);
         }
         #endregion
 
@@ -104,18 +109,64 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
         #region PHẦN THÔNG TIN TÀI KHOẢN
         private void LoadAccountList(DataGridView dgv_AccountList, List<tk_mk> tkmk) { dgv_AccountList.DataSource = tkmk.ToList(); }
-        private void dgv_AccountList_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgv_AccountList_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             pt = e.RowIndex;
-            txbTen_tk.Text = ll_tkmk[pt].TaiKhoan;
-        } // cần chỉnh sửa thêm
+            txb_TenTK.Text = f_tkmk[pt].TaiKhoan;
+        }
         private void btnThemTaiKhoan_Click(object sender, EventArgs e)
         {
+            string nameTK = txb_TenTK.Text;
+            string fullName = txb_FullName.Text;
+            string pass = txb_pass.Text;
+            string loai = cbbLoai_tk.Text;
 
+            bool kqtk = false;
+            tk_mk newTK = new tk_mk(nameTK, pass);
+            foreach (var item in f_tkmk)
+            {
+                if (nameTK == item.TaiKhoan)
+                {
+                    kqtk = true;
+                    MessageBox.Show("Tên Tài Khoản Đã Tồn Tại!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+            if (!kqtk) f_tkmk.Add(newTK);
+            LoadAccountList(dgv_AccountList, f_tkmk);
         }
+        private void btnXoaTaiKhoan_Click(object sender, EventArgs e)
+        {
+            if (pt == -1) MessageBox.Show("Hãy chọn 1 đối tượng", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                DialogResult kqtk = MessageBox.Show("Bạn chắc chắn muốn thay đổi!", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (kqtk == DialogResult.Yes)
+                {
+                    f_tkmk.RemoveAt(pt);
+                    LoadAccountList(dgv_AccountList, f_tkmk);
+                }
+                pt = -1;
+            }
+        }
+
 
         #endregion
 
-    
+        private void btnSuaTaiKhoan_Click(object sender, EventArgs e)
+        {
+            if (pt == -1) MessageBox.Show("Hãy chọn 1 đối tượng", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                string nameTK = txb_TenTK.Text;
+                string fullName = txb_FullName.Text;
+                string pass = txb_pass.Text;
+                string loai = cbbLoai_tk.Text;
+                tk_mk newTK = new tk_mk(nameTK, pass);
+                f_tkmk[pt] = newTK;
+                LoadAccountList(dgv_AccountList, f_tkmk);
+                pt = -1;
+            }
+        }
     }
 }

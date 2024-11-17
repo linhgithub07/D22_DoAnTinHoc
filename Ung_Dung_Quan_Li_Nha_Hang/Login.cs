@@ -85,7 +85,6 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             string filePath = "DanhSachTaiKhoan.bin";
             string tenTK = txBox_dangNhap.Text.Trim();//  .trim: loai bo khoang trang dau cuoi
             string matkhau = txBox_matKhau.Text.Trim();
-
             //kiem tra tk mk co de trong khong?
             if (tenTK == null || matkhau == null)
             {
