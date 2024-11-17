@@ -20,13 +20,6 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         {
             InitializeComponent();
         }
-
-        
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
         private void but_dangNhap_Click(object sender, EventArgs e)
         {
             string filePath = "DanhSachTaiKhoan.bin";
@@ -46,22 +39,16 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             }
             if (flag)
             {
-                this.Hide();
-                Table_Manager form2 = new Table_Manager();
-                form2.ShowDialog();
-                this.Close();
                 MessageBox.Show("Ban da dang nhap thanh cong", "Chuc Mung");
+                Table_Manager form2 = new Table_Manager();
+                this.Hide();
+                form2.ShowDialog();
+                this.Show();
             }
             else
             {
                 MessageBox.Show("Tai khoan chua duoc tao", "Thong bao");
             }
-            // hiện giao diện bên trong.
-            //Table_Manager tm = new Table_Manager();
-            //this.Hide();
-            //tm.ShowDialog();
-            //this.Show();
-
         }
 
         private void but_thoat_Click(object sender, EventArgs e)

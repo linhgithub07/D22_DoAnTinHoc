@@ -140,6 +140,7 @@
             this.Controls.Add(this.txbTenDangNhap);
             this.Controls.Add(this.label1);
             this.Name = "formThongTinCaNhan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formThongTinCaNhan";
             this.ResumeLayout(false);
             this.PerformLayout();

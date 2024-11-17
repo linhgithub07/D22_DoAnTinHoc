@@ -34,7 +34,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
            formAdmin formAdmin = new formAdmin();
             this.Hide();
             formAdmin.ShowDialog();
-            this.Close();
+            this.Show();
         }
     }
 }
