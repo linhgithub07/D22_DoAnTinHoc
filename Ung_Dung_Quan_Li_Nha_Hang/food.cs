@@ -12,6 +12,5 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         private string f_id;
         private string f_name;
         private string f_price;
-
     }
 }

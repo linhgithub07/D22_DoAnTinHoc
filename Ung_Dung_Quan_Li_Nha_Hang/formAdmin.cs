@@ -19,10 +19,15 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
         private void butThongKe_Click(object sender, EventArgs e)
         {
-            this.Close();
+            
 
         }
 
-        
+        private void formAdmin_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+       
     }
 }

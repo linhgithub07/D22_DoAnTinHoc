@@ -40,9 +40,16 @@
             this.tabPageMonAn = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.numUpDownGia_MonAn = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.txbTen_MonAn = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.cbDanhMuc_MonAn = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.txbID_MonAn = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnTimMonAn = new System.Windows.Forms.Button();
@@ -55,15 +62,6 @@
             this.btnSuaMonAn = new System.Windows.Forms.Button();
             this.btnThemMonAn = new System.Windows.Forms.Button();
             this.tabPageDanhMuc = new System.Windows.Forms.TabPage();
-            this.tabPageBanAn = new System.Windows.Forms.TabPage();
-            this.tabPageTaiKhoan = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txbID_MonAn = new System.Windows.Forms.TextBox();
-            this.txbTen_MonAn = new System.Windows.Forms.TextBox();
-            this.cbDanhMuc_MonAn = new System.Windows.Forms.ComboBox();
-            this.numUpDownGia_MonAn = new System.Windows.Forms.NumericUpDown();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.txbTen_DanhMuc = new System.Windows.Forms.TextBox();
@@ -78,6 +76,7 @@
             this.btnXoaDanhMuc = new System.Windows.Forms.Button();
             this.btnSuaDanhMuc = new System.Windows.Forms.Button();
             this.btnThemDanhMuc = new System.Windows.Forms.Button();
+            this.tabPageBanAn = new System.Windows.Forms.TabPage();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.txbTen_Ban = new System.Windows.Forms.TextBox();
@@ -95,6 +94,8 @@
             this.btnXoaBan = new System.Windows.Forms.Button();
             this.btnSuaBan = new System.Windows.Forms.Button();
             this.btnThemBan = new System.Windows.Forms.Button();
+            this.tabPageTaiKhoan = new System.Windows.Forms.TabPage();
+            this.btnResetMK = new System.Windows.Forms.Button();
             this.panel26 = new System.Windows.Forms.Panel();
             this.panel28 = new System.Windows.Forms.Panel();
             this.txbTenHienThi_tk = new System.Windows.Forms.TextBox();
@@ -112,7 +113,6 @@
             this.btnXoaTaiKhoan = new System.Windows.Forms.Button();
             this.btnSuaTaiKhoan = new System.Windows.Forms.Button();
             this.btnThemTaiKhoan = new System.Windows.Forms.Button();
-            this.btnResetMK = new System.Windows.Forms.Button();
             this.tcMonAn.SuspendLayout();
             this.tabPageDoanhThu.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -121,6 +121,7 @@
             this.tabPageMonAn.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownGia_MonAn)).BeginInit();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -129,15 +130,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_MonAn)).BeginInit();
             this.panel4.SuspendLayout();
             this.tabPageDanhMuc.SuspendLayout();
-            this.tabPageBanAn.SuspendLayout();
-            this.tabPageTaiKhoan.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownGia_MonAn)).BeginInit();
             this.panel12.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhMuc)).BeginInit();
             this.panel19.SuspendLayout();
+            this.tabPageBanAn.SuspendLayout();
             this.panel17.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
@@ -145,6 +144,7 @@
             this.panel24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Ban)).BeginInit();
             this.panel25.SuspendLayout();
+            this.tabPageTaiKhoan.SuspendLayout();
             this.panel26.SuspendLayout();
             this.panel28.SuspendLayout();
             this.panel29.SuspendLayout();
@@ -161,7 +161,7 @@
             this.tcMonAn.Controls.Add(this.tabPageDanhMuc);
             this.tcMonAn.Controls.Add(this.tabPageBanAn);
             this.tcMonAn.Controls.Add(this.tabPageTaiKhoan);
-            this.tcMonAn.Location = new System.Drawing.Point(13, 13);
+            this.tcMonAn.Location = new System.Drawing.Point(3, 13);
             this.tcMonAn.Name = "tcMonAn";
             this.tcMonAn.SelectedIndex = 0;
             this.tcMonAn.Size = new System.Drawing.Size(775, 425);
@@ -175,7 +175,7 @@
             this.tabPageDoanhThu.Controls.Add(this.panel1);
             this.tabPageDoanhThu.Location = new System.Drawing.Point(4, 22);
             this.tabPageDoanhThu.Name = "tabPageDoanhThu";
-            this.tabPageDoanhThu.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageDoanhThu.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageDoanhThu.Size = new System.Drawing.Size(767, 399);
             this.tabPageDoanhThu.TabIndex = 0;
             this.tabPageDoanhThu.Text = "Doanh Thu";
@@ -184,7 +184,7 @@
             // panel3
             // 
             this.panel3.Location = new System.Drawing.Point(554, 40);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(212, 358);
             this.panel3.TabIndex = 4;
@@ -195,7 +195,7 @@
             this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Location = new System.Drawing.Point(5, 6);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(544, 32);
             this.panel2.TabIndex = 3;
@@ -203,7 +203,7 @@
             // butThongKe
             // 
             this.butThongKe.Location = new System.Drawing.Point(228, 2);
-            this.butThongKe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.butThongKe.Margin = new System.Windows.Forms.Padding(2);
             this.butThongKe.Name = "butThongKe";
             this.butThongKe.Size = new System.Drawing.Size(81, 25);
             this.butThongKe.TabIndex = 2;
@@ -214,7 +214,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(340, 2);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(202, 20);
             this.dateTimePicker2.TabIndex = 1;
@@ -222,7 +222,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(2, 2);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(202, 20);
             this.dateTimePicker1.TabIndex = 0;
@@ -231,7 +231,7 @@
             // 
             this.panel1.Controls.Add(this.dgv_DoanhThu);
             this.panel1.Location = new System.Drawing.Point(5, 42);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(544, 358);
             this.panel1.TabIndex = 2;
@@ -240,7 +240,7 @@
             // 
             this.dgv_DoanhThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_DoanhThu.Location = new System.Drawing.Point(3, 2);
-            this.dgv_DoanhThu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_DoanhThu.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_DoanhThu.Name = "dgv_DoanhThu";
             this.dgv_DoanhThu.RowHeadersWidth = 51;
             this.dgv_DoanhThu.RowTemplate.Height = 24;
@@ -255,7 +255,7 @@
             this.tabPageMonAn.Controls.Add(this.panel4);
             this.tabPageMonAn.Location = new System.Drawing.Point(4, 22);
             this.tabPageMonAn.Name = "tabPageMonAn";
-            this.tabPageMonAn.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageMonAn.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageMonAn.Size = new System.Drawing.Size(767, 399);
             this.tabPageMonAn.TabIndex = 1;
             this.tabPageMonAn.Text = "Món Ăn";
@@ -268,7 +268,7 @@
             this.panel7.Controls.Add(this.panel9);
             this.panel7.Controls.Add(this.panel8);
             this.panel7.Location = new System.Drawing.Point(392, 83);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(373, 232);
             this.panel7.TabIndex = 3;
@@ -278,40 +278,107 @@
             this.panel11.Controls.Add(this.numUpDownGia_MonAn);
             this.panel11.Controls.Add(this.label4);
             this.panel11.Location = new System.Drawing.Point(2, 174);
-            this.panel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel11.Margin = new System.Windows.Forms.Padding(2);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(369, 52);
             this.panel11.TabIndex = 2;
+            // 
+            // numUpDownGia_MonAn
+            // 
+            this.numUpDownGia_MonAn.Location = new System.Drawing.Point(119, 15);
+            this.numUpDownGia_MonAn.Name = "numUpDownGia_MonAn";
+            this.numUpDownGia_MonAn.Size = new System.Drawing.Size(247, 20);
+            this.numUpDownGia_MonAn.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label4.Location = new System.Drawing.Point(3, 15);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 24);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Giá";
             // 
             // panel10
             // 
             this.panel10.Controls.Add(this.txbTen_MonAn);
             this.panel10.Controls.Add(this.label2);
             this.panel10.Location = new System.Drawing.Point(2, 60);
-            this.panel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel10.Margin = new System.Windows.Forms.Padding(2);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(369, 52);
             this.panel10.TabIndex = 1;
+            // 
+            // txbTen_MonAn
+            // 
+            this.txbTen_MonAn.Location = new System.Drawing.Point(119, 15);
+            this.txbTen_MonAn.Margin = new System.Windows.Forms.Padding(2);
+            this.txbTen_MonAn.Name = "txbTen_MonAn";
+            this.txbTen_MonAn.Size = new System.Drawing.Size(247, 20);
+            this.txbTen_MonAn.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(3, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 24);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Tên";
             // 
             // panel9
             // 
             this.panel9.Controls.Add(this.cbDanhMuc_MonAn);
             this.panel9.Controls.Add(this.label3);
             this.panel9.Location = new System.Drawing.Point(2, 117);
-            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(369, 52);
             this.panel9.TabIndex = 1;
+            // 
+            // cbDanhMuc_MonAn
+            // 
+            this.cbDanhMuc_MonAn.FormattingEnabled = true;
+            this.cbDanhMuc_MonAn.Location = new System.Drawing.Point(119, 19);
+            this.cbDanhMuc_MonAn.Name = "cbDanhMuc_MonAn";
+            this.cbDanhMuc_MonAn.Size = new System.Drawing.Size(247, 21);
+            this.cbDanhMuc_MonAn.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(3, 14);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(111, 24);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Danh Mục";
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.txbID_MonAn);
             this.panel8.Controls.Add(this.label1);
             this.panel8.Location = new System.Drawing.Point(2, 3);
-            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(369, 52);
             this.panel8.TabIndex = 0;
+            // 
+            // txbID_MonAn
+            // 
+            this.txbID_MonAn.Location = new System.Drawing.Point(119, 18);
+            this.txbID_MonAn.Margin = new System.Windows.Forms.Padding(2);
+            this.txbID_MonAn.Name = "txbID_MonAn";
+            this.txbID_MonAn.Size = new System.Drawing.Size(247, 20);
+            this.txbID_MonAn.TabIndex = 5;
             // 
             // label1
             // 
@@ -330,7 +397,7 @@
             this.panel6.Controls.Add(this.btnTimMonAn);
             this.panel6.Controls.Add(this.txbTimMonAn);
             this.panel6.Location = new System.Drawing.Point(392, 6);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(371, 72);
             this.panel6.TabIndex = 2;
@@ -338,7 +405,7 @@
             // btnTimMonAn
             // 
             this.btnTimMonAn.Location = new System.Drawing.Point(286, 6);
-            this.btnTimMonAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnTimMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnTimMonAn.Name = "btnTimMonAn";
             this.btnTimMonAn.Size = new System.Drawing.Size(82, 58);
             this.btnTimMonAn.TabIndex = 4;
@@ -348,7 +415,7 @@
             // txbTimMonAn
             // 
             this.txbTimMonAn.Location = new System.Drawing.Point(9, 24);
-            this.txbTimMonAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txbTimMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.txbTimMonAn.Name = "txbTimMonAn";
             this.txbTimMonAn.Size = new System.Drawing.Size(274, 20);
             this.txbTimMonAn.TabIndex = 0;
@@ -357,7 +424,7 @@
             // 
             this.panel5.Controls.Add(this.dgv_MonAn);
             this.panel5.Location = new System.Drawing.Point(6, 83);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(380, 313);
             this.panel5.TabIndex = 1;
@@ -366,7 +433,7 @@
             // 
             this.dgv_MonAn.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_MonAn.Location = new System.Drawing.Point(3, 3);
-            this.dgv_MonAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgv_MonAn.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_MonAn.Name = "dgv_MonAn";
             this.dgv_MonAn.RowHeadersWidth = 51;
             this.dgv_MonAn.RowTemplate.Height = 24;
@@ -380,7 +447,7 @@
             this.panel4.Controls.Add(this.btnSuaMonAn);
             this.panel4.Controls.Add(this.btnThemMonAn);
             this.panel4.Location = new System.Drawing.Point(6, 6);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(380, 72);
             this.panel4.TabIndex = 0;
@@ -388,7 +455,7 @@
             // btnXemMonAn
             // 
             this.btnXemMonAn.Location = new System.Drawing.Point(288, 6);
-            this.btnXemMonAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXemMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnXemMonAn.Name = "btnXemMonAn";
             this.btnXemMonAn.Size = new System.Drawing.Size(82, 58);
             this.btnXemMonAn.TabIndex = 3;
@@ -398,7 +465,7 @@
             // btnXoaMonAn
             // 
             this.btnXoaMonAn.Location = new System.Drawing.Point(194, 6);
-            this.btnXoaMonAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoaMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaMonAn.Name = "btnXoaMonAn";
             this.btnXoaMonAn.Size = new System.Drawing.Size(82, 58);
             this.btnXoaMonAn.TabIndex = 2;
@@ -408,7 +475,7 @@
             // btnSuaMonAn
             // 
             this.btnSuaMonAn.Location = new System.Drawing.Point(100, 6);
-            this.btnSuaMonAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSuaMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaMonAn.Name = "btnSuaMonAn";
             this.btnSuaMonAn.Size = new System.Drawing.Size(82, 58);
             this.btnSuaMonAn.TabIndex = 1;
@@ -418,7 +485,7 @@
             // btnThemMonAn
             // 
             this.btnThemMonAn.Location = new System.Drawing.Point(3, 3);
-            this.btnThemMonAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemMonAn.Name = "btnThemMonAn";
             this.btnThemMonAn.Size = new System.Drawing.Size(82, 61);
             this.btnThemMonAn.TabIndex = 0;
@@ -431,109 +498,13 @@
             this.tabPageDanhMuc.Controls.Add(this.panel18);
             this.tabPageDanhMuc.Controls.Add(this.panel19);
             this.tabPageDanhMuc.Location = new System.Drawing.Point(4, 22);
-            this.tabPageDanhMuc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageDanhMuc.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageDanhMuc.Name = "tabPageDanhMuc";
-            this.tabPageDanhMuc.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageDanhMuc.Padding = new System.Windows.Forms.Padding(2);
             this.tabPageDanhMuc.Size = new System.Drawing.Size(767, 399);
             this.tabPageDanhMuc.TabIndex = 2;
             this.tabPageDanhMuc.Text = "Danh Mục";
             this.tabPageDanhMuc.UseVisualStyleBackColor = true;
-            // 
-            // tabPageBanAn
-            // 
-            this.tabPageBanAn.Controls.Add(this.panel17);
-            this.tabPageBanAn.Controls.Add(this.panel24);
-            this.tabPageBanAn.Controls.Add(this.panel25);
-            this.tabPageBanAn.Location = new System.Drawing.Point(4, 22);
-            this.tabPageBanAn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageBanAn.Name = "tabPageBanAn";
-            this.tabPageBanAn.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageBanAn.Size = new System.Drawing.Size(767, 399);
-            this.tabPageBanAn.TabIndex = 3;
-            this.tabPageBanAn.Text = "Bàn Ăn";
-            this.tabPageBanAn.UseVisualStyleBackColor = true;
-            // 
-            // tabPageTaiKhoan
-            // 
-            this.tabPageTaiKhoan.Controls.Add(this.btnResetMK);
-            this.tabPageTaiKhoan.Controls.Add(this.panel26);
-            this.tabPageTaiKhoan.Controls.Add(this.panel31);
-            this.tabPageTaiKhoan.Controls.Add(this.panel32);
-            this.tabPageTaiKhoan.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageTaiKhoan.Name = "tabPageTaiKhoan";
-            this.tabPageTaiKhoan.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageTaiKhoan.Size = new System.Drawing.Size(767, 399);
-            this.tabPageTaiKhoan.TabIndex = 4;
-            this.tabPageTaiKhoan.Text = "Tài Khoản";
-            this.tabPageTaiKhoan.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(3, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 24);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Tên";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(3, 14);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 24);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Danh Mục";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(3, 15);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 24);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Giá";
-            // 
-            // txbID_MonAn
-            // 
-            this.txbID_MonAn.Location = new System.Drawing.Point(119, 18);
-            this.txbID_MonAn.Margin = new System.Windows.Forms.Padding(2);
-            this.txbID_MonAn.Name = "txbID_MonAn";
-            this.txbID_MonAn.Size = new System.Drawing.Size(247, 20);
-            this.txbID_MonAn.TabIndex = 5;
-            // 
-            // txbTen_MonAn
-            // 
-            this.txbTen_MonAn.Location = new System.Drawing.Point(119, 15);
-            this.txbTen_MonAn.Margin = new System.Windows.Forms.Padding(2);
-            this.txbTen_MonAn.Name = "txbTen_MonAn";
-            this.txbTen_MonAn.Size = new System.Drawing.Size(247, 20);
-            this.txbTen_MonAn.TabIndex = 6;
-            // 
-            // cbDanhMuc_MonAn
-            // 
-            this.cbDanhMuc_MonAn.FormattingEnabled = true;
-            this.cbDanhMuc_MonAn.Location = new System.Drawing.Point(119, 19);
-            this.cbDanhMuc_MonAn.Name = "cbDanhMuc_MonAn";
-            this.cbDanhMuc_MonAn.Size = new System.Drawing.Size(247, 21);
-            this.cbDanhMuc_MonAn.TabIndex = 3;
-            // 
-            // numUpDownGia_MonAn
-            // 
-            this.numUpDownGia_MonAn.Location = new System.Drawing.Point(119, 15);
-            this.numUpDownGia_MonAn.Name = "numUpDownGia_MonAn";
-            this.numUpDownGia_MonAn.Size = new System.Drawing.Size(247, 20);
-            this.numUpDownGia_MonAn.TabIndex = 4;
             // 
             // panel12
             // 
@@ -676,6 +647,20 @@
             this.btnThemDanhMuc.TabIndex = 0;
             this.btnThemDanhMuc.Text = "Thêm";
             this.btnThemDanhMuc.UseVisualStyleBackColor = true;
+            // 
+            // tabPageBanAn
+            // 
+            this.tabPageBanAn.Controls.Add(this.panel17);
+            this.tabPageBanAn.Controls.Add(this.panel24);
+            this.tabPageBanAn.Controls.Add(this.panel25);
+            this.tabPageBanAn.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBanAn.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageBanAn.Name = "tabPageBanAn";
+            this.tabPageBanAn.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageBanAn.Size = new System.Drawing.Size(767, 399);
+            this.tabPageBanAn.TabIndex = 3;
+            this.tabPageBanAn.Text = "Bàn Ăn";
+            this.tabPageBanAn.UseVisualStyleBackColor = true;
             // 
             // panel17
             // 
@@ -850,6 +835,30 @@
             this.btnThemBan.Text = "Thêm";
             this.btnThemBan.UseVisualStyleBackColor = true;
             // 
+            // tabPageTaiKhoan
+            // 
+            this.tabPageTaiKhoan.Controls.Add(this.btnResetMK);
+            this.tabPageTaiKhoan.Controls.Add(this.panel26);
+            this.tabPageTaiKhoan.Controls.Add(this.panel31);
+            this.tabPageTaiKhoan.Controls.Add(this.panel32);
+            this.tabPageTaiKhoan.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageTaiKhoan.Name = "tabPageTaiKhoan";
+            this.tabPageTaiKhoan.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageTaiKhoan.Size = new System.Drawing.Size(767, 399);
+            this.tabPageTaiKhoan.TabIndex = 4;
+            this.tabPageTaiKhoan.Text = "Tài Khoản";
+            this.tabPageTaiKhoan.UseVisualStyleBackColor = true;
+            // 
+            // btnResetMK
+            // 
+            this.btnResetMK.Location = new System.Drawing.Point(686, 273);
+            this.btnResetMK.Name = "btnResetMK";
+            this.btnResetMK.Size = new System.Drawing.Size(75, 32);
+            this.btnResetMK.TabIndex = 11;
+            this.btnResetMK.Text = "Reset";
+            this.btnResetMK.UseVisualStyleBackColor = true;
+            // 
             // panel26
             // 
             this.panel26.Controls.Add(this.panel28);
@@ -1023,15 +1032,6 @@
             this.btnThemTaiKhoan.Text = "Thêm";
             this.btnThemTaiKhoan.UseVisualStyleBackColor = true;
             // 
-            // btnResetMK
-            // 
-            this.btnResetMK.Location = new System.Drawing.Point(686, 273);
-            this.btnResetMK.Name = "btnResetMK";
-            this.btnResetMK.Size = new System.Drawing.Size(75, 32);
-            this.btnResetMK.TabIndex = 11;
-            this.btnResetMK.Text = "Reset";
-            this.btnResetMK.UseVisualStyleBackColor = true;
-            // 
             // formAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1040,6 +1040,7 @@
             this.Controls.Add(this.tcMonAn);
             this.Name = "formAdmin";
             this.Text = "Admin";
+            this.Load += new System.EventHandler(this.formAdmin_Load);
             this.tcMonAn.ResumeLayout(false);
             this.tabPageDoanhThu.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -1049,6 +1050,7 @@
             this.panel7.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownGia_MonAn)).EndInit();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -1061,9 +1063,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_MonAn)).EndInit();
             this.panel4.ResumeLayout(false);
             this.tabPageDanhMuc.ResumeLayout(false);
-            this.tabPageBanAn.ResumeLayout(false);
-            this.tabPageTaiKhoan.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownGia_MonAn)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
@@ -1072,6 +1071,7 @@
             this.panel18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhMuc)).EndInit();
             this.panel19.ResumeLayout(false);
+            this.tabPageBanAn.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
@@ -1082,6 +1082,7 @@
             this.panel24.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Ban)).EndInit();
             this.panel25.ResumeLayout(false);
+            this.tabPageTaiKhoan.ResumeLayout(false);
             this.panel26.ResumeLayout(false);
             this.panel28.ResumeLayout(false);
             this.panel28.PerformLayout();

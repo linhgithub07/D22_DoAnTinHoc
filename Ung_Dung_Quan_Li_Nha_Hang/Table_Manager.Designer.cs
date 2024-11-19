@@ -204,14 +204,14 @@
             // thongtincanhan
             // 
             this.thongtincanhan.Name = "thongtincanhan";
-            this.thongtincanhan.Size = new System.Drawing.Size(180, 22);
+            this.thongtincanhan.Size = new System.Drawing.Size(176, 22);
             this.thongtincanhan.Text = "Thông Tin Cá Nhân";
             this.thongtincanhan.Click += new System.EventHandler(this.thongtincanhan_Click);
             // 
             // dangxuat
             // 
             this.dangxuat.Name = "dangxuat";
-            this.dangxuat.Size = new System.Drawing.Size(180, 22);
+            this.dangxuat.Size = new System.Drawing.Size(176, 22);
             this.dangxuat.Text = "Đăng Xuất";
             this.dangxuat.Click += new System.EventHandler(this.dangxuat_Click);
             // 
@@ -232,6 +232,7 @@
             this.Controls.Add(this.panel2);
             this.Name = "Table_Manager";
             this.Text = "Quản Lí Nhà Hàng";
+            this.Load += new System.EventHandler(this.Table_Manager_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
