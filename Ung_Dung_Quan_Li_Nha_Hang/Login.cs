@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -21,12 +22,6 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             InitializeComponent();
         }
 
-        
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
         private void but_dangNhap_Click(object sender, EventArgs e)
         {
             string filePath = "DanhSachTaiKhoan.bin";
@@ -36,25 +31,24 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             List<tk_mk> dsTK = DocDsTK(filePath);
 
             bool flag = false;
-            for (int i = 0; i < dsTK.Count; i++)
+            foreach(tk_mk tk in dsTK)
             {
-                if (dsTK[i].TaiKhoan == tenTK && dsTK[i].MatKhau == matkhau)
-                {
+                if(tk.TaiKhoan==tenTK&&tk.MatKhau==matkhau)
                     flag = true;
-                    break;
-                }
+                break;
             }
             if (flag)
             {
+                MessageBox.Show("Bạn đã đăng nhập thành công.", "Chúc Mừng");
                 this.Hide();
                 Table_Manager form2 = new Table_Manager();
                 form2.ShowDialog();
-                this.Close();
-                MessageBox.Show("Ban da dang nhap thanh cong", "Chuc Mung");
+                this.Show();
+                
             }
             else
             {
-                MessageBox.Show("Tai khoan chua duoc tao", "Thong bao");
+                MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác.", "Thông Báo!");
             }
             // hiện giao diện bên trong.
             //Table_Manager tm = new Table_Manager();
@@ -66,7 +60,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
         private void but_thoat_Click(object sender, EventArgs e)
         {
-            DialogResult kq = MessageBox.Show("Ban co chac la muon thoat khong?", "Thong Bao!", MessageBoxButtons.YesNo);
+            DialogResult kq = MessageBox.Show("Bạn có chắc là muốn thoát không?", "Thông Báo!", MessageBoxButtons.YesNo);
             if (kq == DialogResult.Yes) this.Close();
         }
 
@@ -96,44 +90,54 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         private void butTaoTK_Click(object sender, EventArgs e)
         {
             string filePath = "DanhSachTaiKhoan.bin";
-            string tenTK = txBox_dangNhap.Text.Trim();//  .trim: loai bo khoang trang dau cuoi
+            string tenTK = txBox_dangNhap.Text.Trim();
             string matkhau = txBox_matKhau.Text.Trim();
 
-            //kiem tra tk mk co de trong khong?
-            if (tenTK == null || matkhau == null)
+            // Kiểm tra tài khoản và mật khẩu có để trống không
+            if (string.IsNullOrWhiteSpace(tenTK) || string.IsNullOrWhiteSpace(matkhau))
+            //string.IsNullOrWhiteSpace: kiểm tra xem chuỗi rỗng hoặc chỉ chứa khoảng trắng
             {
-                MessageBox.Show("Ten tai khoan va mat khau khong duoc de trong!", "Thong Bao");
+                MessageBox.Show("Tên tài khoản và mật khẩu không được để trống!", "Thông Báo");
+                return; // Dừng việc tiếp tục xử lý nếu dữ liệu không hợp lệ
             }
-            //Doc danh sach tai khoan tu file
+
+            // Đọc danh sách tài khoản từ file
             List<tk_mk> dsTK = DocDsTK(filePath);
 
-            //kiem tra dstk ton tai hay chua
+            // Kiểm tra tài khoản đã tồn tại hay chưa
             bool flag = false;
-            for (int i = 0; i < dsTK.Count; i++)
+            foreach (tk_mk tk in dsTK)
             {
-                if (dsTK[i].TaiKhoan == tenTK)
+                if (tk.TaiKhoan == tenTK)
                 {
                     flag = true;
                     break;
                 }
             }
-            //neu ton tai thi xuat ra thong bao da ton tai, vui long su dung tai khoan khac. Neu khong thi tiep tuc tao tai khoan
+
+            // Nếu tồn tại thì thông báo, nếu không thì tiếp tục tạo tài khoản
             if (flag)
             {
-                MessageBox.Show("Tai khoan da ton tai. Vui long su dung ten tai khoan khac!", "Thong bao");
+                MessageBox.Show("Tài khoản đã tồn tại. Vui lòng sử dụng tên tài khoản khác!", "Thông Báo");
             }
+            else
+            {
+                // Tạo tài khoản mới và ghi vào file
+                tk_mk taikhoanMoi = new tk_mk(tenTK, matkhau);
 
-            //Tao tai khoan moi va ghi vao file
-            tk_mk taikhoanMoi = new tk_mk(tenTK, matkhau);
-            //them tk vao dsach
-            dsTK.Add(taikhoanMoi);
-            //ghi tkmk vao file 
-            GhiFile(filePath, dsTK);
+                // Thêm tài khoản vào danh sách
+                dsTK.Add(taikhoanMoi);
 
-            txBox_dangNhap.Clear();
-            txBox_matKhau.Clear();
-            //Sau khi tao thanh cong thi xuat thong bao da tao thanh cong
-            //MessageBox.Show("Da tao thanh cong", "Thong Bao");
+                // Ghi tài khoản vào file
+                GhiFile(filePath, dsTK);
+
+                // Sau khi tạo thành công thì xuất thông báo
+                MessageBox.Show("Đã tạo tài khoản thành công!", "Thông Báo");
+
+                // Xóa nội dung textbox
+                txBox_dangNhap.Clear();
+                txBox_matKhau.Clear();
+            }
         }
     }
 }
