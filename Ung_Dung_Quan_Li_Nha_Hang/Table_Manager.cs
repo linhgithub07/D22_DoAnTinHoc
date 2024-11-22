@@ -25,18 +25,19 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         private void thongtincanhan_Click(object sender, EventArgs e)
         {
             formThongTinCaNhan f_thongtin= new formThongTinCaNhan();
+            this.Hide();
             f_thongtin.ShowDialog();  
+            this.Show();
         }
 
         private void admin_Click(object sender, EventArgs e)
         {
            formAdmin formAdmin = new formAdmin();
-           formAdmin.ShowDialog();
+            this.Hide();
+            formAdmin.ShowDialog();
+            this.Show();
         }
 
-        private void Table_Manager_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

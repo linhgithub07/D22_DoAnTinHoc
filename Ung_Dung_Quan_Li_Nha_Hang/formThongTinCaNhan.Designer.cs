@@ -140,7 +140,7 @@
             this.Controls.Add(this.txbTenDangNhap);
             this.Controls.Add(this.label1);
             this.Name = "formThongTinCaNhan";
-            this.Text = "formThongTinCaNhan";
+            this.Text = "Tài Khoản";
             this.ResumeLayout(false);
             this.PerformLayout();
 
