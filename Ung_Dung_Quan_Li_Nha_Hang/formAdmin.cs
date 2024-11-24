@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ung_Dung_Quan_Li_Nha_Hang;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Ung_Dung_Quan_Li_Nha_Hang
 {
