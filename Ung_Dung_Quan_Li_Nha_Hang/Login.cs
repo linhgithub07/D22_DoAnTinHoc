@@ -45,7 +45,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 this.Hide();
                 form2.ShowDialog();
                 this.Show();
-                
+
             }
             else
             {

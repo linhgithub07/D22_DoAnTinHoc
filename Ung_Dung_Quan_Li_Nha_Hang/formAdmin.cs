@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ung_Dung_Quan_Li_Nha_Hang;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
@@ -28,17 +29,53 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             tableManager.Show();
         }
 
-
         #region PHẦN MÓN ĂN.
+        #region Phần Lưu Món Ăn
+        private void SaveFoodListToFile(string filePath)
+        {
+            using (FileStream fs = new FileStream(filePath, FileMode.Create))
+            {
+                BinaryFormatter sf = new BinaryFormatter();
+                sf.Serialize(fs, f);
+            }
+            MessageBox.Show("Danh sách món ăn đã được lưu vào file thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btn_SaveFood_Click(object sender, EventArgs e)
+        {
+            SaveFoodListToFile("DanhSachMonAn.dat");
+        }
+        private void LoadFoodListFromFile(string filePath)
+        {
+            if (File.Exists(filePath))
+            {
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    f = (List<food>)formatter.Deserialize(fs);
+                    LoadFoodList(dgv_MonAn, f);
+                }
+                MessageBox.Show("Danh sách món ăn đã được tải từ file!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("File không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion
+
         private void LoadFoodList(DataGridView dgv_MonAn, List<food> f)
         {
             dgv_MonAn.DataSource = f.ToList();
         }
-        private void dgv_MonAn_CellClick(object sender, DataGridViewCellEventArgs e) // chức năng của hàm: khi click vao bất cứ vị trí trên dong nào thì data của dòng đó được hiển thị.
+        private void dgv_MonAn_CellClick(object sender, DataGridViewCellEventArgs e) 
         {
             pt = e.RowIndex;
             txt_ListFood.Text = f[pt].F_list;
-        }
+            txt_FoodID.Text = f[pt].F_id;
+            txt_FoodName.Text = f[pt].F_name;
+            txt_FoodPrice.Text = f[pt].F_price;
+        }// chức năng của hàm: khi click vao bất cứ vị trí trên dong nào thì data của dòng đó được hiển thị.
         private void btnThemMonAn_Click(object sender, EventArgs e)
         {
             string list = txt_ListFood.Text;
@@ -93,6 +130,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         private void btn_Xem_Click(object sender, EventArgs e)
         {
             LoadFoodList(dgv_MonAn, f);
+            LoadFoodListFromFile("DanhSachMonAn.dat");
         }
         private void btnTimMonAn_Click(object sender, EventArgs e)
         {
@@ -212,6 +250,25 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 pt = -1;
             }
         }
-         #endregion
+        #endregion
+
+        //================ Hàm fix bug save food =================/
+        [Serializable]
+        public class food
+        {
+            public string F_list { get; set; }
+            public string F_id { get; set; }
+            public string F_name { get; set; }
+            public string F_price { get; set; }
+
+            public food(string list, string id, string name, string price)
+            {
+                F_list = list;
+                F_id = id;
+                F_name = name;
+                F_price = price;
+            }
+        }
     }
 }
+
