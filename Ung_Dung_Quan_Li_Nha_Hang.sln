@@ -5,6 +5,11 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ung_Dung_Quan_Li_Nha_Hang", "Ung_Dung_Quan_Li_Nha_Hang\Ung_Dung_Quan_Li_Nha_Hang.csproj", "{7F6AEA31-AF0B-4129-929C-D419FFAD676F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BA3D8B35-E7A1-4786-B35E-97EB06556BBB}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -33,6 +33,19 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             }
 
         }
+        public Bill() 
+        {   m_id=string.Empty;
+            m_ten = string.Empty;
+            m_ngay=DateTime.Now;
+            m_tien = 0;
+        }
+        public Bill(string id, string ten, DateTime ngay, double tien)
+        {
+            m_id = id;
+            m_ten = ten;
+            m_ngay = ngay;
+            m_tien = tien;
+        }
     }
 
 }
