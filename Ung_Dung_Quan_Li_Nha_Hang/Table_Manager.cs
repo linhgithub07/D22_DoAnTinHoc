@@ -35,8 +35,8 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
         private void admin_Click(object sender, EventArgs e)
         {
-           formAdmin formAdmin = new formAdmin();
-            //this.Hide();
+            formAdmin formAdmin = new formAdmin();
+            this.Hide();
             formAdmin.Show();
             this.Show();
         }
@@ -75,5 +75,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
 
         #endregion
+
+       
     }
 }

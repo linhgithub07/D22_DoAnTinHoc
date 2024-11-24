@@ -821,6 +821,30 @@
             this.btnResetMK.Text = "Reset";
             this.btnResetMK.UseVisualStyleBackColor = true;
             // 
+            // tabPageTaiKhoan
+            // 
+            this.tabPageTaiKhoan.Controls.Add(this.btnResetMK);
+            this.tabPageTaiKhoan.Controls.Add(this.panel26);
+            this.tabPageTaiKhoan.Controls.Add(this.panel31);
+            this.tabPageTaiKhoan.Controls.Add(this.panel32);
+            this.tabPageTaiKhoan.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageTaiKhoan.Name = "tabPageTaiKhoan";
+            this.tabPageTaiKhoan.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageTaiKhoan.Size = new System.Drawing.Size(843, 405);
+            this.tabPageTaiKhoan.TabIndex = 4;
+            this.tabPageTaiKhoan.Text = "Tài Khoản";
+            this.tabPageTaiKhoan.UseVisualStyleBackColor = true;
+            // 
+            // btnResetMK
+            // 
+            this.btnResetMK.Location = new System.Drawing.Point(759, 357);
+            this.btnResetMK.Name = "btnResetMK";
+            this.btnResetMK.Size = new System.Drawing.Size(75, 32);
+            this.btnResetMK.TabIndex = 11;
+            this.btnResetMK.Text = "Reset";
+            this.btnResetMK.UseVisualStyleBackColor = true;
+            // 
             // panel26
             // 
             this.panel26.Controls.Add(this.panel12);

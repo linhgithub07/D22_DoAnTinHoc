@@ -212,12 +212,6 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 pt = -1;
             }
         }
-
-
-
-
-        #endregion
-
-        
+         #endregion
     }
 }

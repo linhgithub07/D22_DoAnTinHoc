@@ -133,7 +133,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 txBox_dangNhap.Clear();
                 txBox_matKhau.Clear();
             }
-        }
+        } 
     }
 }
 
