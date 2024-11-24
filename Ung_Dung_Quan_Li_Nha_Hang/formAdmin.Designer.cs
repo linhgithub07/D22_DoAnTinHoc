@@ -113,6 +113,7 @@
             this.btnXoaTaiKhoan = new System.Windows.Forms.Button();
             this.btnSuaTaiKhoan = new System.Windows.Forms.Button();
             this.btnThemTaiKhoan = new System.Windows.Forms.Button();
+            this.btn_SaveFood = new System.Windows.Forms.Button();
             this.tcMonAn.SuspendLayout();
             this.tabPageDoanhThu.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -506,6 +507,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.btn_SaveFood);
             this.panel4.Controls.Add(this.btn_Xem);
             this.panel4.Controls.Add(this.btnXoaMonAn);
             this.panel4.Controls.Add(this.btnSuaMonAn);
@@ -518,7 +520,7 @@
             // 
             // btn_Xem
             // 
-            this.btn_Xem.Location = new System.Drawing.Point(370, 8);
+            this.btn_Xem.Location = new System.Drawing.Point(357, 8);
             this.btn_Xem.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Xem.Name = "btn_Xem";
             this.btn_Xem.Size = new System.Drawing.Size(82, 58);
@@ -529,7 +531,7 @@
             // 
             // btnXoaMonAn
             // 
-            this.btnXoaMonAn.Location = new System.Drawing.Point(247, 7);
+            this.btnXoaMonAn.Location = new System.Drawing.Point(185, 8);
             this.btnXoaMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaMonAn.Name = "btnXoaMonAn";
             this.btnXoaMonAn.Size = new System.Drawing.Size(82, 58);
@@ -540,7 +542,7 @@
             // 
             // btnSuaMonAn
             // 
-            this.btnSuaMonAn.Location = new System.Drawing.Point(129, 7);
+            this.btnSuaMonAn.Location = new System.Drawing.Point(99, 7);
             this.btnSuaMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaMonAn.Name = "btnSuaMonAn";
             this.btnSuaMonAn.Size = new System.Drawing.Size(82, 58);
@@ -551,7 +553,7 @@
             // 
             // btnThemMonAn
             // 
-            this.btnThemMonAn.Location = new System.Drawing.Point(3, 5);
+            this.btnThemMonAn.Location = new System.Drawing.Point(13, 5);
             this.btnThemMonAn.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemMonAn.Name = "btnThemMonAn";
             this.btnThemMonAn.Size = new System.Drawing.Size(82, 61);
@@ -1018,6 +1020,17 @@
             this.btnThemTaiKhoan.UseVisualStyleBackColor = true;
             this.btnThemTaiKhoan.Click += new System.EventHandler(this.btnThemTaiKhoan_Click);
             // 
+            // btn_SaveFood
+            // 
+            this.btn_SaveFood.Location = new System.Drawing.Point(271, 8);
+            this.btn_SaveFood.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_SaveFood.Name = "btn_SaveFood";
+            this.btn_SaveFood.Size = new System.Drawing.Size(82, 58);
+            this.btn_SaveFood.TabIndex = 4;
+            this.btn_SaveFood.Text = "Lưu";
+            this.btn_SaveFood.UseVisualStyleBackColor = true;
+            this.btn_SaveFood.Click += new System.EventHandler(this.btn_SaveFood_Click);
+            // 
             // formAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1166,5 +1179,6 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.TextBox txb_pass;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btn_SaveFood;
     }
 }
