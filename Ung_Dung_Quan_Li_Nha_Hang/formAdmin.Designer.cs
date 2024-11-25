@@ -64,31 +64,23 @@
             this.dvg_nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_SaveFood = new System.Windows.Forms.Button();
             this.btn_Xem = new System.Windows.Forms.Button();
             this.btnXoaMonAn = new System.Windows.Forms.Button();
             this.btnSuaMonAn = new System.Windows.Forms.Button();
             this.btnThemMonAn = new System.Windows.Forms.Button();
             this.tabPageBanAn = new System.Windows.Forms.TabPage();
             this.panel17 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txb_TongTien = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel21 = new System.Windows.Forms.Panel();
             this.txbTen_Ban = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.panel22 = new System.Windows.Forms.Panel();
-            this.cbbTrangThai_Ban = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.panel23 = new System.Windows.Forms.Panel();
             this.txbID_Ban = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.panel24 = new System.Windows.Forms.Panel();
             this.dgv_Ban = new System.Windows.Forms.DataGridView();
-            this.dgv_TableID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_TableNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel25 = new System.Windows.Forms.Panel();
+            this.btnGhiBan = new System.Windows.Forms.Button();
             this.btnXoaBan = new System.Windows.Forms.Button();
             this.btnSuaBan = new System.Windows.Forms.Button();
             this.btnThemBan = new System.Windows.Forms.Button();
@@ -113,7 +105,12 @@
             this.btnXoaTaiKhoan = new System.Windows.Forms.Button();
             this.btnSuaTaiKhoan = new System.Windows.Forms.Button();
             this.btnThemTaiKhoan = new System.Windows.Forms.Button();
-            this.btn_SaveFood = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txbTrangThai = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dgv_TableID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_TableNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcMonAn.SuspendLayout();
             this.tabPageDoanhThu.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -132,9 +129,7 @@
             this.panel4.SuspendLayout();
             this.tabPageBanAn.SuspendLayout();
             this.panel17.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel21.SuspendLayout();
-            this.panel22.SuspendLayout();
             this.panel23.SuspendLayout();
             this.panel24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Ban)).BeginInit();
@@ -148,6 +143,7 @@
             this.panel31.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AccountList)).BeginInit();
             this.panel32.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcMonAn
@@ -518,6 +514,17 @@
             this.panel4.Size = new System.Drawing.Size(454, 72);
             this.panel4.TabIndex = 0;
             // 
+            // btn_SaveFood
+            // 
+            this.btn_SaveFood.Location = new System.Drawing.Point(271, 8);
+            this.btn_SaveFood.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_SaveFood.Name = "btn_SaveFood";
+            this.btn_SaveFood.Size = new System.Drawing.Size(82, 58);
+            this.btn_SaveFood.TabIndex = 4;
+            this.btn_SaveFood.Text = "Lưu";
+            this.btn_SaveFood.UseVisualStyleBackColor = true;
+            this.btn_SaveFood.Click += new System.EventHandler(this.btn_SaveFood_Click);
+            // 
             // btn_Xem
             // 
             this.btn_Xem.Location = new System.Drawing.Point(357, 8);
@@ -580,43 +587,12 @@
             // 
             this.panel17.Controls.Add(this.panel3);
             this.panel17.Controls.Add(this.panel21);
-            this.panel17.Controls.Add(this.panel22);
             this.panel17.Controls.Add(this.panel23);
             this.panel17.Location = new System.Drawing.Point(461, 84);
             this.panel17.Margin = new System.Windows.Forms.Padding(2);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(378, 315);
             this.panel17.TabIndex = 10;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txb_TongTien);
-            this.panel3.Controls.Add(this.label6);
-            this.panel3.Location = new System.Drawing.Point(2, 261);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(369, 52);
-            this.panel3.TabIndex = 7;
-            // 
-            // txb_TongTien
-            // 
-            this.txb_TongTien.Location = new System.Drawing.Point(119, 15);
-            this.txb_TongTien.Margin = new System.Windows.Forms.Padding(2);
-            this.txb_TongTien.Name = "txb_TongTien";
-            this.txb_TongTien.Size = new System.Drawing.Size(247, 20);
-            this.txb_TongTien.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(3, 11);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 24);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Tổng Tiền";
             // 
             // panel21
             // 
@@ -647,39 +623,6 @@
             this.label10.Size = new System.Drawing.Size(94, 24);
             this.label10.TabIndex = 1;
             this.label10.Text = "Tên Bàn";
-            // 
-            // panel22
-            // 
-            this.panel22.Controls.Add(this.cbbTrangThai_Ban);
-            this.panel22.Controls.Add(this.label11);
-            this.panel22.Location = new System.Drawing.Point(2, 172);
-            this.panel22.Margin = new System.Windows.Forms.Padding(2);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(369, 52);
-            this.panel22.TabIndex = 1;
-            // 
-            // cbbTrangThai_Ban
-            // 
-            this.cbbTrangThai_Ban.FormattingEnabled = true;
-            this.cbbTrangThai_Ban.Items.AddRange(new object[] {
-            "Co ",
-            "Khong"});
-            this.cbbTrangThai_Ban.Location = new System.Drawing.Point(119, 19);
-            this.cbbTrangThai_Ban.Name = "cbbTrangThai_Ban";
-            this.cbbTrangThai_Ban.Size = new System.Drawing.Size(247, 21);
-            this.cbbTrangThai_Ban.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label11.Location = new System.Drawing.Point(3, 14);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(117, 24);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Trạng Thái";
             // 
             // panel23
             // 
@@ -726,8 +669,7 @@
             this.dgv_Ban.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgv_TableID,
             this.dgv_TableNumber,
-            this.dgv_TongTien,
-            this.dgv_TrangThai});
+            this.Column1});
             this.dgv_Ban.Location = new System.Drawing.Point(3, 2);
             this.dgv_Ban.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_Ban.Name = "dgv_Ban";
@@ -735,29 +677,11 @@
             this.dgv_Ban.RowTemplate.Height = 24;
             this.dgv_Ban.Size = new System.Drawing.Size(453, 393);
             this.dgv_Ban.TabIndex = 0;
-            // 
-            // dgv_TableID
-            // 
-            this.dgv_TableID.HeaderText = "Mã Bàn Ăn";
-            this.dgv_TableID.Name = "dgv_TableID";
-            // 
-            // dgv_TableNumber
-            // 
-            this.dgv_TableNumber.HeaderText = "Tên Bàn";
-            this.dgv_TableNumber.Name = "dgv_TableNumber";
-            // 
-            // dgv_TongTien
-            // 
-            this.dgv_TongTien.HeaderText = "Tổng Tiền";
-            this.dgv_TongTien.Name = "dgv_TongTien";
-            // 
-            // dgv_TrangThai
-            // 
-            this.dgv_TrangThai.HeaderText = "Trạng Thái";
-            this.dgv_TrangThai.Name = "dgv_TrangThai";
+            this.dgv_Ban.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Ban_RowEnter);
             // 
             // panel25
             // 
+            this.panel25.Controls.Add(this.btnGhiBan);
             this.panel25.Controls.Add(this.btnXoaBan);
             this.panel25.Controls.Add(this.btnSuaBan);
             this.panel25.Controls.Add(this.btnThemBan);
@@ -767,9 +691,20 @@
             this.panel25.Size = new System.Drawing.Size(380, 72);
             this.panel25.TabIndex = 8;
             // 
+            // btnGhiBan
+            // 
+            this.btnGhiBan.Location = new System.Drawing.Point(287, 6);
+            this.btnGhiBan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGhiBan.Name = "btnGhiBan";
+            this.btnGhiBan.Size = new System.Drawing.Size(82, 58);
+            this.btnGhiBan.TabIndex = 3;
+            this.btnGhiBan.Text = "Lưu";
+            this.btnGhiBan.UseVisualStyleBackColor = true;
+            this.btnGhiBan.Click += new System.EventHandler(this.btnGhiBan_Click);
+            // 
             // btnXoaBan
             // 
-            this.btnXoaBan.Location = new System.Drawing.Point(283, 6);
+            this.btnXoaBan.Location = new System.Drawing.Point(198, 6);
             this.btnXoaBan.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoaBan.Name = "btnXoaBan";
             this.btnXoaBan.Size = new System.Drawing.Size(82, 58);
@@ -780,13 +715,14 @@
             // 
             // btnSuaBan
             // 
-            this.btnSuaBan.Location = new System.Drawing.Point(143, 6);
+            this.btnSuaBan.Location = new System.Drawing.Point(100, 6);
             this.btnSuaBan.Margin = new System.Windows.Forms.Padding(2);
             this.btnSuaBan.Name = "btnSuaBan";
             this.btnSuaBan.Size = new System.Drawing.Size(82, 58);
             this.btnSuaBan.TabIndex = 1;
             this.btnSuaBan.Text = "Sửa";
             this.btnSuaBan.UseVisualStyleBackColor = true;
+            this.btnSuaBan.Click += new System.EventHandler(this.btnSuaBan_Click);
             // 
             // btnThemBan
             // 
@@ -798,30 +734,6 @@
             this.btnThemBan.Text = "Thêm";
             this.btnThemBan.UseVisualStyleBackColor = true;
             this.btnThemBan.Click += new System.EventHandler(this.btnThemBan_Click);
-            // 
-            // tabPageTaiKhoan
-            // 
-            this.tabPageTaiKhoan.Controls.Add(this.btnResetMK);
-            this.tabPageTaiKhoan.Controls.Add(this.panel26);
-            this.tabPageTaiKhoan.Controls.Add(this.panel31);
-            this.tabPageTaiKhoan.Controls.Add(this.panel32);
-            this.tabPageTaiKhoan.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTaiKhoan.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageTaiKhoan.Name = "tabPageTaiKhoan";
-            this.tabPageTaiKhoan.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageTaiKhoan.Size = new System.Drawing.Size(843, 405);
-            this.tabPageTaiKhoan.TabIndex = 4;
-            this.tabPageTaiKhoan.Text = "Tài Khoản";
-            this.tabPageTaiKhoan.UseVisualStyleBackColor = true;
-            // 
-            // btnResetMK
-            // 
-            this.btnResetMK.Location = new System.Drawing.Point(759, 357);
-            this.btnResetMK.Name = "btnResetMK";
-            this.btnResetMK.Size = new System.Drawing.Size(75, 32);
-            this.btnResetMK.TabIndex = 11;
-            this.btnResetMK.Text = "Reset";
-            this.btnResetMK.UseVisualStyleBackColor = true;
             // 
             // tabPageTaiKhoan
             // 
@@ -1052,16 +964,53 @@
             this.btnThemTaiKhoan.UseVisualStyleBackColor = true;
             this.btnThemTaiKhoan.Click += new System.EventHandler(this.btnThemTaiKhoan_Click);
             // 
-            // btn_SaveFood
+            // panel3
             // 
-            this.btn_SaveFood.Location = new System.Drawing.Point(271, 8);
-            this.btn_SaveFood.Margin = new System.Windows.Forms.Padding(2);
-            this.btn_SaveFood.Name = "btn_SaveFood";
-            this.btn_SaveFood.Size = new System.Drawing.Size(82, 58);
-            this.btn_SaveFood.TabIndex = 4;
-            this.btn_SaveFood.Text = "Lưu";
-            this.btn_SaveFood.UseVisualStyleBackColor = true;
-            this.btn_SaveFood.Click += new System.EventHandler(this.btn_SaveFood_Click);
+            this.panel3.Controls.Add(this.txbTrangThai);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Location = new System.Drawing.Point(2, 158);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(369, 52);
+            this.panel3.TabIndex = 2;
+            // 
+            // txbTrangThai
+            // 
+            this.txbTrangThai.Location = new System.Drawing.Point(119, 15);
+            this.txbTrangThai.Margin = new System.Windows.Forms.Padding(2);
+            this.txbTrangThai.Name = "txbTrangThai";
+            this.txbTrangThai.Size = new System.Drawing.Size(247, 20);
+            this.txbTrangThai.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(3, 11);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 24);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Trạng Thái";
+            // 
+            // dgv_TableID
+            // 
+            this.dgv_TableID.DataPropertyName = "ID";
+            this.dgv_TableID.HeaderText = "Mã Bàn Ăn";
+            this.dgv_TableID.Name = "dgv_TableID";
+            // 
+            // dgv_TableNumber
+            // 
+            this.dgv_TableNumber.DataPropertyName = "TenBan";
+            this.dgv_TableNumber.HeaderText = "Tên Bàn";
+            this.dgv_TableNumber.Name = "dgv_TableNumber";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "TrangThai";
+            this.Column1.HeaderText = "Trạng Thái";
+            this.Column1.Name = "Column1";
             // 
             // formAdmin
             // 
@@ -1072,6 +1021,7 @@
             this.Name = "formAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
+            this.Load += new System.EventHandler(this.formAdmin_Load);
             this.tcMonAn.ResumeLayout(false);
             this.tabPageDoanhThu.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -1096,12 +1046,8 @@
             this.panel4.ResumeLayout(false);
             this.tabPageBanAn.ResumeLayout(false);
             this.panel17.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
-            this.panel22.ResumeLayout(false);
-            this.panel22.PerformLayout();
             this.panel23.ResumeLayout(false);
             this.panel23.PerformLayout();
             this.panel24.ResumeLayout(false);
@@ -1120,6 +1066,8 @@
             this.panel31.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AccountList)).EndInit();
             this.panel32.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1161,9 +1109,6 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.TextBox txbTen_Ban;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel panel22;
-        private System.Windows.Forms.ComboBox cbbTrangThai_Ban;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.TextBox txbID_Ban;
         private System.Windows.Forms.Label label12;
@@ -1200,17 +1145,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dvg_nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgv_price;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txb_TongTien;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TableID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TableNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TongTien;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TrangThai;
         private System.Windows.Forms.Button btn_Xem;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.TextBox txb_pass;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_SaveFood;
+        private System.Windows.Forms.Button btnGhiBan;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txbTrangThai;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TableID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_TableNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }

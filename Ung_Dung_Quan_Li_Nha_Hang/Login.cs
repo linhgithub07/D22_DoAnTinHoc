@@ -20,6 +20,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         public Login()
         {
             InitializeComponent();
+
         }
 
         private void but_dangNhap_Click(object sender, EventArgs e)

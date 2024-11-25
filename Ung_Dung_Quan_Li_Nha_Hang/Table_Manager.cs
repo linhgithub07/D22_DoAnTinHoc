@@ -10,13 +10,14 @@ using System.Windows.Forms;
 
 namespace Ung_Dung_Quan_Li_Nha_Hang
 {
+
     public partial class Table_Manager : Form
     {
-
+        private List<BanAn> dsBanAn;
         public Table_Manager()
         {
             InitializeComponent();
-            formAdmin adminForm = new formAdmin();
+
         }
 
         private void dangxuat_Click(object sender, EventArgs e)
@@ -41,40 +42,52 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         }
 
         #region Xu Ly Them Ban ra form giao dien
-        private Dictionary<string, Button> buttonBanAn = new Dictionary<string, Button>();
-        public void ThemBan(BanAn ban)
+
+        public void CapNhatDanhSachBan(List<BanAn> danhSachBan)
         {
-            Button btnBan = new Button
+            dsBanAn = danhSachBan; // Cập nhật danh sách bàn từ form khác
+            CapNhatDanhSachBan();  // Cập nhật giao diện với danh sách mới
+        }
+        public void CapNhatDanhSachBan()
+        {
+            flpBan.Controls.Clear(); // Xóa các nút cũ trong FlowLayoutPanel
+
+            foreach (BanAn ban in dsBanAn)
             {
-                //Thiet ke kich thuoc cua ban khi an tao ban.
-                Text = ban.TenBan,
-                Width = 100,
-                Height = 50,
-                Margin = new Padding(5)
-            };
-        
-            buttonBanAn.Add(ban.TenBan, btnBan);
-            flowLayoutPanel.Controls.Add(btnBan);
+                // Tạo nút cho từng bàn
+                Button btnBan = new Button();
+                btnBan.Text = ban.Tenban;
+                btnBan.Width = 100;
+                btnBan.Height = 50;
+                
+                // Tự cập nhật lại màu:
+                updateMauBanAn(ban, btnBan);
+                // Gắn sự kiện khi nhấn vào nút
+                btnBan.Click += (s, e) =>
+                {
+                    MessageBox.Show($"ID: {ban.ID}\nTên bàn: {ban.Tenban}\nTrạng thái: {ban.TrangThai} ", "Thông tin bàn");
+                };
+
+                // Thêm nút vào FlowLayoutPanel
+                flpBan.Controls.Add(btnBan);
+            }
         }
 
-        public void XoaBan(BanAn ban)
+        private void updateMauBanAn(BanAn ban, Button btnBan)
         {
-            foreach (var x in buttonBanAn.ToList())
+            if(ban.TrangThai=="Đã đặt")
             {
-                if (x.Key == ban.TenBan)
-                {
-                    flowLayoutPanel.Controls.Remove(x.Value);
-                    buttonBanAn.Remove(x.Key);
-                    break;
-                }
+                btnBan.BackColor = Color.Red;
+                btnBan.ForeColor = Color.White;
             }
-
-
+            else
+            {
+                btnBan.BackColor = Color.Green;
+                btnBan.ForeColor = Color.White;
+            }
         }
 
 
         #endregion
-
-       
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using Ung_Dung_Quan_Li_Nha_Hang;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
+
 namespace Ung_Dung_Quan_Li_Nha_Hang
 {
     
@@ -21,11 +22,12 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         private List<food> f = new List<food>();
         private List<tk_mk> f_tkmk = new List<tk_mk>(); // ll = load list
         private int pt = -1;
+        private Table_Manager formHienThi;
         public formAdmin()
         {
             InitializeComponent();
-            Table_Manager tableManager = new Table_Manager();
-            tableManager.Show();
+            formHienThi = new Table_Manager();
+            formHienThi.Show();
         }
 
         #region PHẦN MÓN ĂN.
@@ -148,45 +150,127 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
         #region PHẦN BÀN ĂN
         private List<BanAn> dsBanAn = new List<BanAn>();
-        private Table_Manager formHienThi = new Table_Manager();
 
+
+        private void formAdmin_Load(object sender, EventArgs e)
+        {
+            
+            dsBanAn = new List<BanAn>();
+            LoadFile();
+            hienthi();
+            formHienThi = new Table_Manager();
+            formHienThi.Show();
+            formHienThi.CapNhatDanhSachBan(dsBanAn);
+        }
+        private void hienthi()
+        {
+            dgv_Ban.DataSource = dsBanAn.ToList();
+        }
+
+        private BanAn timBan(string ma)
+        {
+            foreach(BanAn x in dsBanAn)
+                if (x.ID == ma) return x;
+            return null;
+        }
         private void btnThemBan_Click(object sender, EventArgs e)
         {
-            string tenBan = txbTen_Ban.Text;
-            string ID = txbID_Ban.Text;
-            string trangThai = cbbTrangThai_Ban.Text;
-            foreach (BanAn x in dsBanAn)
+            if (string.IsNullOrWhiteSpace(txbID_Ban.Text))
             {
-                if (x.ID_Ban == null)
-                {
-                    dsBanAn.Add(x);
-                    formHienThi.ThemBan(x);
-                    MessageBox.Show("Thêm bàn thành công! ");
-                }
-                else
-                {
-                    MessageBox.Show("Bàn ăn đã tồn tại không thể thêm!!!", "Thông Tháo!");
-                }
+                MessageBox.Show("ID không được để trống!");
+                return;
+            }
+            BanAn banAn = new BanAn();
+            banAn.ID = txbID_Ban.Text;
+            banAn.Tenban = txbTen_Ban.Text;
+            banAn.TrangThai = txbTrangThai.Text;
+            if(timBan(banAn.ID)==null)
+            {
+                dsBanAn.Add(banAn);
+                hienthi();
+                formHienThi.CapNhatDanhSachBan();
+            }
+            else
+            {
+                MessageBox.Show("Bàn đã tồn tại!");
             }
         }
 
         private void btnXoaBan_Click(object sender, EventArgs e)
         {
-            string tenBan = txbTen_Ban.Text;
-            string ID = txbID_Ban.Text;
-            string trangThai = cbbTrangThai_Ban.Text;
-            foreach (BanAn x in dsBanAn)
+            string ma=txbID_Ban.Text;
+            if(timBan(ma)!=null)
             {
-                if(x.ID_Ban != null)
+                dsBanAn.Remove(timBan(ma));
+                hienthi();
+                formHienThi.CapNhatDanhSachBan();
+            }
+            else
+            {
+                MessageBox.Show("không tìm thấy bàn để xóa!");
+            }
+        }
+        private void btnSuaBan_Click(object sender, EventArgs e)
+        {
+            string ma = txbID_Ban.Text;
+            BanAn banAn=timBan(ma);
+            if (banAn != null)
+            {
+                if (ma != dgv_Ban.CurrentRow.Cells[0].Value.ToString())
                 {
-                    dsBanAn.Add(x);
-                    formHienThi.XoaBan(x);
-                    MessageBox.Show("Đã xóa bàn thành công! ");
+                    MessageBox.Show("ID bàn không được phép thay đổi!");
+                    return;
                 }
-                else
+                banAn.Tenban = txbTen_Ban.Text;
+                banAn.TrangThai= txbTrangThai.Text;
+                hienthi();
+                MessageBox.Show("Cập nhật bàn thành công!");
+            }
+            else 
+            {
+                MessageBox.Show("Không tìm thấy bàn để sửa!");
+            }
+        }
+
+        private void dgv_Ban_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            txbID_Ban.Text = dgv_Ban.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txbTen_Ban.Text = dgv_Ban.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txbTrangThai.Text = dgv_Ban.Rows[e.RowIndex].Cells[2].Value.ToString();
+        }
+
+        private void btnGhiBan_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                using (Stream file = File.Open("dsBanAn.bin", FileMode.Create))
                 {
-                    MessageBox.Show("Bàn không tồn tại!", "Thông báo!!!");
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(file, this.dsBanAn);
                 }
+                MessageBox.Show("Ghi Thanh Cong.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void LoadFile()
+        {
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            string strFileLocation = "dsBanAn.bin";
+            if (File.Exists(strFileLocation))
+            {
+                using (FileStream readerFileStream = new FileStream(strFileLocation, FileMode.Open, System.IO.FileAccess.Read))
+                {
+                    dsBanAn = (List<BanAn>)binaryFormatter.Deserialize(readerFileStream);
+                }
+            }
+            else
+            {
+                dsBanAn = new List<BanAn>(); // Nếu file không tồn tại, khởi tạo danh sách rỗng
             }
         }
         #endregion
@@ -268,6 +352,10 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 F_price = price;
             }
         }
+
+       
+
+       
     }
 }
 

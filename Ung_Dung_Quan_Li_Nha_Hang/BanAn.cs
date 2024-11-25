@@ -9,15 +9,35 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
     [Serializable]
     public class BanAn
     {
-
         private string m_id_ban;
-        private string m_tenBan;
-        //private string m_tongtien;
-        public string ID_Ban
-        { get { return m_id_ban; } set { m_id_ban = value; } }
-        public string TenBan
-        { get { return m_tenBan; } set { m_tenBan = value; } }
-        //public string TongTien
-        //{  get { return m_tongtien;}}
+        private string m_tenban;
+        private string m_trangthai;
+        public string ID
+        {
+            get { return m_id_ban; }
+            set { m_id_ban = value;}
+        }
+        public string Tenban 
+        {
+            get {  return m_tenban; }
+            set {  m_tenban = value;}
+        }
+        public string TrangThai
+        {
+            get { return m_trangthai; }
+            set { m_trangthai = value;}
+        }
+        public BanAn() 
+        {
+            m_id_ban=string.Empty;
+            m_tenban=string.Empty;
+            m_trangthai = "trong";
+        }
+        public BanAn(string id_ban, string tenban, string trangthai)
+        {
+            m_id_ban = id_ban;
+            Tenban = tenban;
+            m_trangthai = trangthai;
+        }
     }
 }

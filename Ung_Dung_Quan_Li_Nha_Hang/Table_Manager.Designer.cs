@@ -38,7 +38,6 @@
             this.comboBoxTenMonAn = new System.Windows.Forms.ComboBox();
             this.btnThemMonAn = new System.Windows.Forms.Button();
             this.comboBoxLoaiDoAn = new System.Windows.Forms.ComboBox();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.listView1 = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -46,6 +45,7 @@
             this.thongtintaikhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.thongtincanhan = new System.Windows.Forms.ToolStripMenuItem();
             this.dangxuat = new System.Windows.Forms.ToolStripMenuItem();
+            this.flpBan = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -137,13 +137,6 @@
             this.comboBoxLoaiDoAn.Size = new System.Drawing.Size(182, 21);
             this.comboBoxLoaiDoAn.TabIndex = 3;
             // 
-            // flowLayoutPanel
-            // 
-            this.flowLayoutPanel.Location = new System.Drawing.Point(12, 27);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(319, 497);
-            this.flowLayoutPanel.TabIndex = 26;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.listView1);
@@ -170,7 +163,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(769, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(781, 24);
             this.menuStrip1.TabIndex = 33;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -204,14 +197,21 @@
             this.dangxuat.Text = "Đăng Xuất";
             this.dangxuat.Click += new System.EventHandler(this.dangxuat_Click);
             // 
+            // flpBan
+            // 
+            this.flpBan.Location = new System.Drawing.Point(12, 30);
+            this.flpBan.Name = "flpBan";
+            this.flpBan.Size = new System.Drawing.Size(322, 491);
+            this.flpBan.TabIndex = 34;
+            // 
             // Table_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(769, 536);
+            this.ClientSize = new System.Drawing.Size(781, 536);
+            this.Controls.Add(this.flpBan);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.panel2);
             this.Name = "Table_Manager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -238,7 +238,6 @@
         private System.Windows.Forms.ComboBox comboBoxTenMonAn;
         private System.Windows.Forms.Button btnThemMonAn;
         private System.Windows.Forms.ComboBox comboBoxLoaiDoAn;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -246,5 +245,6 @@
         private System.Windows.Forms.ToolStripMenuItem thongtintaikhoan;
         private System.Windows.Forms.ToolStripMenuItem thongtincanhan;
         private System.Windows.Forms.ToolStripMenuItem dangxuat;
+        private System.Windows.Forms.FlowLayoutPanel flpBan;
     }
 }
