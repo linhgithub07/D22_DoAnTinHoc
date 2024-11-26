@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,11 +15,12 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
     public partial class Table_Manager : Form
     {
-        private List<BanAn> dsBanAn;
+        private List<BanAn> dsBanAn = new List<BanAn>();
         public Table_Manager()
         {
             InitializeComponent();
-
+            LoadFile();
+            CapNhatDanhSachBan();
         }
 
         private void dangxuat_Click(object sender, EventArgs e)
@@ -29,22 +32,38 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         {
             formThongTinCaNhan f_thongtin= new formThongTinCaNhan();
             this.Hide();
-            f_thongtin.ShowDialog();  
+            f_thongtin.ShowDialog();
             this.Show();
         }
 
         private void admin_Click(object sender, EventArgs e)
         {
-            formAdmin formAdmin = new formAdmin();
+            formAdmin formAdmin = new formAdmin(dsBanAn);
+            formAdmin.ButtonAdded += FormAdmin_ButtonAdded;
             this.Hide();
-            formAdmin.Show();
+            formAdmin.ShowDialog();
             this.Show();
+            CapNhatDanhSachBan(dsBanAn);  // Cập nhật lại giao diện
         }
 
         #region Xu Ly Them Ban ra form giao dien
 
+        private void FormAdmin_ButtonAdded(BanAn ban)
+        {
+            if (ban != null)
+            {
+                dsBanAn.Add(ban);
+                // Thêm bàn mới vào danh sách } CapNhatDanhSachBan(dsBanAn); // Cập nhật lại giao diện }
+            }
+            CapNhatDanhSachBan(dsBanAn);
+        }
         public void CapNhatDanhSachBan(List<BanAn> danhSachBan)
         {
+            if(dsBanAn==null)
+            {
+                MessageBox.Show("Danh sách bàn không có dữ liệu!");
+                return;
+            }
             dsBanAn = danhSachBan; // Cập nhật danh sách bàn từ form khác
             CapNhatDanhSachBan();  // Cập nhật giao diện với danh sách mới
         }
@@ -87,6 +106,18 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             }
         }
 
+        private void LoadFile()
+        {
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            string strFileLocation = "dsBanAn.bin";
+            if (File.Exists(strFileLocation))
+            {
+                using (FileStream readerFileStream = new FileStream(strFileLocation, FileMode.Open, System.IO.FileAccess.Read))
+                {
+                    dsBanAn = (List<BanAn>)binaryFormatter.Deserialize(readerFileStream);
+                }
+            }
+        }
 
         #endregion
     }

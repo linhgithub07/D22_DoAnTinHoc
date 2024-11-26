@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ung_Dung_Quan_Li_Nha_Hang;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 
 namespace Ung_Dung_Quan_Li_Nha_Hang
@@ -19,15 +20,24 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
     public partial class formAdmin : Form
 
     {
+
         private List<food> f = new List<food>();
         private List<tk_mk> f_tkmk = new List<tk_mk>(); // ll = load list
         private int pt = -1;
-        private Table_Manager formHienThi;
-        public formAdmin()
+        // private List<BanAn> DanhSachBanAn = new List<BanAn>();
+        private List<BanAn> DanhSachBanAn;
+        public delegate void ButtonAddedEventHandler(BanAn newTable);
+        public event ButtonAddedEventHandler ButtonAdded;
+        public formAdmin(List<BanAn> dsBan)
         {
             InitializeComponent();
-            formHienThi = new Table_Manager();
-            formHienThi.Show();
+            if (dsBan == null)
+            {
+                MessageBox.Show("Danh sách bàn không hợp lệ!");
+                return;
+            }
+            DanhSachBanAn = new List<BanAn>(dsBan);
+            hienthi();
         }
 
         #region PHẦN MÓN ĂN.
@@ -149,27 +159,22 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
 
         #region PHẦN BÀN ĂN
-        private List<BanAn> dsBanAn = new List<BanAn>();
-
 
         private void formAdmin_Load(object sender, EventArgs e)
         {
             
-            dsBanAn = new List<BanAn>();
+            //DanhSachBanAn = new List<BanAn>();
             LoadFile();
             hienthi();
-            formHienThi = new Table_Manager();
-            formHienThi.Show();
-            formHienThi.CapNhatDanhSachBan(dsBanAn);
         }
         private void hienthi()
         {
-            dgv_Ban.DataSource = dsBanAn.ToList();
+            dgv_Ban.DataSource = DanhSachBanAn.ToList();
         }
 
         private BanAn timBan(string ma)
         {
-            foreach(BanAn x in dsBanAn)
+            foreach(BanAn x in DanhSachBanAn)
                 if (x.ID == ma) return x;
             return null;
         }
@@ -186,9 +191,11 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             banAn.TrangThai = txbTrangThai.Text;
             if(timBan(banAn.ID)==null)
             {
-                dsBanAn.Add(banAn);
+                DanhSachBanAn.Add(banAn);
+                //
+                ButtonAdded?.Invoke(banAn);
+                //
                 hienthi();
-                formHienThi.CapNhatDanhSachBan();
             }
             else
             {
@@ -201,9 +208,11 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             string ma=txbID_Ban.Text;
             if(timBan(ma)!=null)
             {
-                dsBanAn.Remove(timBan(ma));
+                DanhSachBanAn.Remove(timBan(ma));
+                //
+                ButtonAdded?.Invoke(null);
+                //
                 hienthi();
-                formHienThi.CapNhatDanhSachBan();
             }
             else
             {
@@ -216,13 +225,11 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             BanAn banAn=timBan(ma);
             if (banAn != null)
             {
-                if (ma != dgv_Ban.CurrentRow.Cells[0].Value.ToString())
-                {
-                    MessageBox.Show("ID bàn không được phép thay đổi!");
-                    return;
-                }
                 banAn.Tenban = txbTen_Ban.Text;
                 banAn.TrangThai= txbTrangThai.Text;
+                //
+                ButtonAdded?.Invoke(null);
+                //
                 hienthi();
                 MessageBox.Show("Cập nhật bàn thành công!");
             }
@@ -247,7 +254,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 using (Stream file = File.Open("dsBanAn.bin", FileMode.Create))
                 {
                     BinaryFormatter bf = new BinaryFormatter();
-                    bf.Serialize(file, this.dsBanAn);
+                    bf.Serialize(file, this.DanhSachBanAn);
                 }
                 MessageBox.Show("Ghi Thanh Cong.");
             }
@@ -265,18 +272,17 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             {
                 using (FileStream readerFileStream = new FileStream(strFileLocation, FileMode.Open, System.IO.FileAccess.Read))
                 {
-                    dsBanAn = (List<BanAn>)binaryFormatter.Deserialize(readerFileStream);
+                    DanhSachBanAn = (List<BanAn>)binaryFormatter.Deserialize(readerFileStream);
                 }
             }
-            else
-            {
-                dsBanAn = new List<BanAn>(); // Nếu file không tồn tại, khởi tạo danh sách rỗng
-            }
         }
-        #endregion
 
-        #region PHẦN THÔNG TIN TÀI KHOẢN
-        private void LoadAccountList(DataGridView dgv_AccountList, List<tk_mk> tkmk) { dgv_AccountList.DataSource = tkmk.ToList(); }
+        //
+        
+                #endregion
+
+                #region PHẦN THÔNG TIN TÀI KHOẢN
+                private void LoadAccountList(DataGridView dgv_AccountList, List<tk_mk> tkmk) { dgv_AccountList.DataSource = tkmk.ToList(); }
         private void dgv_AccountList_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             pt = e.RowIndex;
@@ -335,27 +341,6 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         }
         #endregion
 
-        //================ Hàm fix bug save food =================/
-        [Serializable]
-        public class food
-        {
-            public string F_list { get; set; }
-            public string F_id { get; set; }
-            public string F_name { get; set; }
-            public string F_price { get; set; }
-
-            public food(string list, string id, string name, string price)
-            {
-                F_list = list;
-                F_id = id;
-                F_name = name;
-                F_price = price;
-            }
-        }
-
-       
-
-       
     }
 }
 
