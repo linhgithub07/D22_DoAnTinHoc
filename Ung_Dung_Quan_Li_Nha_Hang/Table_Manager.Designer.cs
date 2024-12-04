@@ -46,6 +46,9 @@
             this.thongtincanhan = new System.Windows.Forms.ToolStripMenuItem();
             this.dangxuat = new System.Windows.Forms.ToolStripMenuItem();
             this.flpBan = new System.Windows.Forms.FlowLayoutPanel();
+            this.butThanhToan = new System.Windows.Forms.Button();
+            this.txbTongTien = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -186,14 +189,14 @@
             // thongtincanhan
             // 
             this.thongtincanhan.Name = "thongtincanhan";
-            this.thongtincanhan.Size = new System.Drawing.Size(180, 22);
+            this.thongtincanhan.Size = new System.Drawing.Size(176, 22);
             this.thongtincanhan.Text = "Thông Tin Cá Nhân";
             this.thongtincanhan.Click += new System.EventHandler(this.thongtincanhan_Click);
             // 
             // dangxuat
             // 
             this.dangxuat.Name = "dangxuat";
-            this.dangxuat.Size = new System.Drawing.Size(180, 22);
+            this.dangxuat.Size = new System.Drawing.Size(176, 22);
             this.dangxuat.Text = "Đăng Xuất";
             this.dangxuat.Click += new System.EventHandler(this.dangxuat_Click);
             // 
@@ -204,11 +207,39 @@
             this.flpBan.Size = new System.Drawing.Size(322, 491);
             this.flpBan.TabIndex = 34;
             // 
+            // butThanhToan
+            // 
+            this.butThanhToan.Location = new System.Drawing.Point(661, 113);
+            this.butThanhToan.Name = "butThanhToan";
+            this.butThanhToan.Size = new System.Drawing.Size(108, 68);
+            this.butThanhToan.TabIndex = 35;
+            this.butThanhToan.Text = "Thanh Toán";
+            this.butThanhToan.UseVisualStyleBackColor = true;
+            // 
+            // txbTongTien
+            // 
+            this.txbTongTien.Location = new System.Drawing.Point(661, 225);
+            this.txbTongTien.Name = "txbTongTien";
+            this.txbTongTien.Size = new System.Drawing.Size(100, 20);
+            this.txbTongTien.TabIndex = 36;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(661, 206);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Thành tiền";
+            // 
             // Table_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(781, 536);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txbTongTien);
+            this.Controls.Add(this.butThanhToan);
             this.Controls.Add(this.flpBan);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
@@ -246,5 +277,8 @@
         private System.Windows.Forms.ToolStripMenuItem thongtincanhan;
         private System.Windows.Forms.ToolStripMenuItem dangxuat;
         private System.Windows.Forms.FlowLayoutPanel flpBan;
+        private System.Windows.Forms.Button butThanhToan;
+        private System.Windows.Forms.TextBox txbTongTien;
+        private System.Windows.Forms.Label label3;
     }
 }

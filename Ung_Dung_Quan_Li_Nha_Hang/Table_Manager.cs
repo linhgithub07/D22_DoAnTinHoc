@@ -47,13 +47,11 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         }
 
         #region Xu Ly Them Ban ra form giao dien
-
         private void FormAdmin_ButtonAdded(BanAn ban)
         {
             if (ban != null)
             {
                 dsBanAn.Add(ban);
-                // Thêm bàn mới vào danh sách } CapNhatDanhSachBan(dsBanAn); // Cập nhật lại giao diện }
             }
             CapNhatDanhSachBan(dsBanAn);
         }

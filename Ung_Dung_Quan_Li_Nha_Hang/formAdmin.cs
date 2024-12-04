@@ -192,9 +192,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             if(timBan(banAn.ID)==null)
             {
                 DanhSachBanAn.Add(banAn);
-                //
                 ButtonAdded?.Invoke(banAn);
-                //
                 hienthi();
             }
             else
@@ -209,9 +207,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             if(timBan(ma)!=null)
             {
                 DanhSachBanAn.Remove(timBan(ma));
-                //
                 ButtonAdded?.Invoke(null);
-                //
                 hienthi();
             }
             else
@@ -227,9 +223,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             {
                 banAn.Tenban = txbTen_Ban.Text;
                 banAn.TrangThai= txbTrangThai.Text;
-                //
                 ButtonAdded?.Invoke(null);
-                //
                 hienthi();
                 MessageBox.Show("Cập nhật bàn thành công!");
             }
