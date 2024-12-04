@@ -37,10 +37,5 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             formAdmin.ShowDialog();
             this.Show();
         }
-
-        private void Table_Manager_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

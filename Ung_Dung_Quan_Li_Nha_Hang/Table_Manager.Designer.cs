@@ -40,44 +40,45 @@
             this.comboBoxLoaiDoAn = new System.Windows.Forms.ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.admin = new System.Windows.Forms.ToolStripMenuItem();
-            this.thongtintaikhoan = new System.Windows.Forms.ToolStripMenuItem();
-            this.thongtincanhan = new System.Windows.Forms.ToolStripMenuItem();
-            this.dangxuat = new System.Windows.Forms.ToolStripMenuItem();
             this.gdv_oder = new System.Windows.Forms.DataGridView();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.admin = new System.Windows.Forms.ToolStripMenuItem();
+            this.thongtintaikhoan = new System.Windows.Forms.ToolStripMenuItem();
+            this.thongtincanhan = new System.Windows.Forms.ToolStripMenuItem();
+            this.dangxuat = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdv_oder)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(946, 349);
+            this.label2.Location = new System.Drawing.Point(934, 360);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 32;
             this.label2.Text = "Thành Tiền";
+//            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtTongTien
             // 
-            this.txtTongTien.Location = new System.Drawing.Point(949, 365);
+            this.txtTongTien.Location = new System.Drawing.Point(922, 376);
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.Size = new System.Drawing.Size(92, 20);
             this.txtTongTien.TabIndex = 31;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(655, 45);
+            this.numericUpDown1.Location = new System.Drawing.Point(315, 18);
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(56, 20);
             this.numericUpDown1.TabIndex = 29;
@@ -85,7 +86,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(946, 263);
+            this.label1.Location = new System.Drawing.Point(942, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 30;
@@ -94,14 +95,27 @@
             // comboBoxGiamGia
             // 
             this.comboBoxGiamGia.FormattingEnabled = true;
-            this.comboBoxGiamGia.Location = new System.Drawing.Point(949, 279);
+            this.comboBoxGiamGia.Items.AddRange(new object[] {
+            "5%",
+            "10%",
+            "20%",
+            "30%",
+            "40%",
+            "50%",
+            "60%",
+            "70%",
+            "80%",
+            "90%",
+            "100%"});
+            this.comboBoxGiamGia.Location = new System.Drawing.Point(923, 104);
             this.comboBoxGiamGia.Name = "comboBoxGiamGia";
             this.comboBoxGiamGia.Size = new System.Drawing.Size(88, 21);
             this.comboBoxGiamGia.TabIndex = 28;
+            this.comboBoxGiamGia.Text = "5%";
             // 
             // btnThanhToan
             // 
-            this.btnThanhToan.Location = new System.Drawing.Point(949, 90);
+            this.btnThanhToan.Location = new System.Drawing.Point(926, 445);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(88, 76);
             this.btnThanhToan.TabIndex = 25;
@@ -113,9 +127,10 @@
             this.panel1.Controls.Add(this.comboBoxTenMonAn);
             this.panel1.Controls.Add(this.btnThemMonAn);
             this.panel1.Controls.Add(this.comboBoxLoaiDoAn);
-            this.panel1.Location = new System.Drawing.Point(340, 27);
+            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Location = new System.Drawing.Point(441, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(314, 57);
+            this.panel1.Size = new System.Drawing.Size(375, 57);
             this.panel1.TabIndex = 27;
             // 
             // comboBoxTenMonAn
@@ -147,69 +162,17 @@
             // 
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 27);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(319, 497);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(359, 497);
             this.flowLayoutPanel1.TabIndex = 26;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.gdv_oder);
             this.panel2.Controls.Add(this.listView1);
-            this.panel2.Location = new System.Drawing.Point(337, 87);
+            this.panel2.Location = new System.Drawing.Point(377, 90);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(606, 437);
+            this.panel2.Size = new System.Drawing.Size(543, 437);
             this.panel2.TabIndex = 24;
-            // 
-            // listView1
-            // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(0, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(603, 431);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.admin,
-            this.thongtintaikhoan});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1049, 24);
-            this.menuStrip1.TabIndex = 33;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // admin
-            // 
-            this.admin.Name = "admin";
-            this.admin.Size = new System.Drawing.Size(55, 20);
-            this.admin.Text = "Admin";
-            this.admin.Click += new System.EventHandler(this.admin_Click);
-            // 
-            // thongtintaikhoan
-            // 
-            this.thongtintaikhoan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thongtincanhan,
-            this.dangxuat});
-            this.thongtintaikhoan.Name = "thongtintaikhoan";
-            this.thongtintaikhoan.Size = new System.Drawing.Size(126, 20);
-            this.thongtintaikhoan.Text = "Thông Tin Tài Khoản";
-            // 
-            // thongtincanhan
-            // 
-            this.thongtincanhan.Name = "thongtincanhan";
-            this.thongtincanhan.Size = new System.Drawing.Size(180, 22);
-            this.thongtincanhan.Text = "Thông Tin Cá Nhân";
-            this.thongtincanhan.Click += new System.EventHandler(this.thongtincanhan_Click);
-            // 
-            // dangxuat
-            // 
-            this.dangxuat.Name = "dangxuat";
-            this.dangxuat.Size = new System.Drawing.Size(180, 22);
-            this.dangxuat.Text = "Đăng Xuất";
-            this.dangxuat.Click += new System.EventHandler(this.dangxuat_Click);
             // 
             // gdv_oder
             // 
@@ -220,9 +183,9 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.gdv_oder.Location = new System.Drawing.Point(3, 3);
+            this.gdv_oder.Location = new System.Drawing.Point(0, 3);
             this.gdv_oder.Name = "gdv_oder";
-            this.gdv_oder.Size = new System.Drawing.Size(600, 431);
+            this.gdv_oder.Size = new System.Drawing.Size(545, 431);
             this.gdv_oder.TabIndex = 1;
             // 
             // Column5
@@ -250,15 +213,66 @@
             this.Column4.HeaderText = "Ngày";
             this.Column4.Name = "Column4";
             // 
+            // listView1
+            // 
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(33, 3);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(512, 431);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.admin,
+            this.thongtintaikhoan});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1032, 24);
+            this.menuStrip1.TabIndex = 33;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // admin
+            // 
+            this.admin.Name = "admin";
+            this.admin.Size = new System.Drawing.Size(55, 20);
+            this.admin.Text = "Admin";
+            this.admin.Click += new System.EventHandler(this.admin_Click);
+            // 
+            // thongtintaikhoan
+            // 
+            this.thongtintaikhoan.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thongtincanhan,
+            this.dangxuat});
+            this.thongtintaikhoan.Name = "thongtintaikhoan";
+            this.thongtintaikhoan.Size = new System.Drawing.Size(126, 20);
+            this.thongtintaikhoan.Text = "Thông Tin Tài Khoản";
+            // 
+            // thongtincanhan
+            // 
+            this.thongtincanhan.Name = "thongtincanhan";
+            this.thongtincanhan.Size = new System.Drawing.Size(176, 22);
+            this.thongtincanhan.Text = "Thông Tin Cá Nhân";
+            this.thongtincanhan.Click += new System.EventHandler(this.thongtincanhan_Click);
+            // 
+            // dangxuat
+            // 
+            this.dangxuat.Name = "dangxuat";
+            this.dangxuat.Size = new System.Drawing.Size(176, 22);
+            this.dangxuat.Text = "Đăng Xuất";
+            this.dangxuat.Click += new System.EventHandler(this.dangxuat_Click);
+            // 
             // Table_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 570);
+            this.ClientSize = new System.Drawing.Size(1032, 543);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTongTien);
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxGiamGia);
             this.Controls.Add(this.btnThanhToan);
@@ -266,14 +280,15 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Name = "Table_Manager";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lí Nhà Hàng";
-            this.Load += new System.EventHandler(this.Table_Manager_Load);
+  //          this.Load += new System.EventHandler(this.Table_Manager_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gdv_oder)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gdv_oder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

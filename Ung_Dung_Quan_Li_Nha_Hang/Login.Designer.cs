@@ -49,7 +49,7 @@
             // 
             // butTaoTK
             // 
-            this.butTaoTK.Location = new System.Drawing.Point(396, 189);
+            this.butTaoTK.Location = new System.Drawing.Point(316, 189);
             this.butTaoTK.Name = "butTaoTK";
             this.butTaoTK.Size = new System.Drawing.Size(75, 23);
             this.butTaoTK.TabIndex = 13;
@@ -59,7 +59,7 @@
             // 
             // but_thoat
             // 
-            this.but_thoat.Location = new System.Drawing.Point(396, 227);
+            this.but_thoat.Location = new System.Drawing.Point(397, 189);
             this.but_thoat.Name = "but_thoat";
             this.but_thoat.Size = new System.Drawing.Size(75, 23);
             this.but_thoat.TabIndex = 12;
@@ -126,6 +126,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lí Nhà Hàng";
             this.ResumeLayout(false);
             this.PerformLayout();
