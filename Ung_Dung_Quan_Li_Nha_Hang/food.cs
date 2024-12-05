@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ung_Dung_Quan_Li_Nha_Hang
 {
+    [Serializable]
     internal class food
     {
         private string f_list;
@@ -19,7 +20,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             this.F_id = f_id;
             this.F_name = f_name;
             this.F_price = f_price;
-        }
+        } 
         public string F_list { get; set; }
         public string F_id { get; set; }
         public string F_name { get; set; }

@@ -16,10 +16,11 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
     [Serializable]
     public partial class Login : Form
     {
-        private List<tk_mk> dsTKMK;
+        private List<tk_mk> dsTK;
         public Login()
         {
             InitializeComponent();
+
         }
 
         private void but_dangNhap_Click(object sender, EventArgs e)
@@ -28,7 +29,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             string tenTK = txBox_dangNhap.Text.Trim();
             string matkhau = txBox_matKhau.Text.Trim();
 
-            List<tk_mk> dsTK = DocDsTK(filePath);
+           dsTK = DocDsTK(filePath);
 
             bool flag = false;
             foreach(tk_mk tk in dsTK)
@@ -42,20 +43,15 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 MessageBox.Show("Bạn đã đăng nhập thành công.", "Chúc Mừng");
                 this.Hide();
                 Table_Manager form2 = new Table_Manager();
+                this.Hide();
                 form2.ShowDialog();
                 this.Show();
-                
+
             }
             else
             {
                 MessageBox.Show("Tài khoản hoặc mật khẩu không chính xác.", "Thông Báo!");
             }
-            // hiện giao diện bên trong.
-            //Table_Manager tm = new Table_Manager();
-            //this.Hide();
-            //tm.ShowDialog();
-            //this.Show();
-
         }
 
         private void but_thoat_Click(object sender, EventArgs e)
@@ -138,7 +134,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 txBox_dangNhap.Clear();
                 txBox_matKhau.Clear();
             }
-        }
+        } 
     }
 }
 
