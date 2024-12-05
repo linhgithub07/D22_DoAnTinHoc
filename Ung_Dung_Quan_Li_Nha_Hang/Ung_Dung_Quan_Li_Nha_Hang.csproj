@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThongTinTK_MK.cs" />
     <Compile Include="tk_mk.cs" />
     <EmbeddedResource Include="formAdmin.resx">
       <DependentUpon>formAdmin.cs</DependentUpon>
