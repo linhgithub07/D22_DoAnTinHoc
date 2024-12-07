@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace Ung_Dung_Quan_Li_Nha_Hang
 {
+    [Serializable]
 
     public partial class Table_Manager : Form
     {
@@ -117,6 +118,32 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             }
         }
 
+        #endregion
+
+        #region Phần oder
+
+        private List<Bill> dsHoaDon;
+        private void luuHoaDon(string filePath, List<Bill> danhSachHoaDon)
+        {
+            using (FileStream fs = new FileStream(filePath, FileMode.Create))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fs, danhSachHoaDon);
+            }
+        }
+
+        private void loadHoaDon()
+        {
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            string strFileLocation = "dsHoaDon.bin";
+            if (File.Exists(strFileLocation))
+            {
+                using (FileStream readerFileStream = new FileStream(strFileLocation, FileMode.Open, System.IO.FileAccess.Read))
+                {
+                    dsHoaDon = (List<Bill>)binaryFormatter.Deserialize(readerFileStream);
+                }
+            }
+        }
         #endregion
     }
 }
