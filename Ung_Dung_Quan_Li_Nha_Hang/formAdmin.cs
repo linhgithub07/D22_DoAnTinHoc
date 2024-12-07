@@ -162,8 +162,9 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
         private void formAdmin_Load(object sender, EventArgs e)
         {
-            
+
             //DanhSachBanAn = new List<BanAn>();
+            dsHoaDon = new List<Bill>();
             LoadFile();
             hienthi();
         }
@@ -335,6 +336,48 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         }
         #endregion
 
+        #region Phần Thống Kê
+        private List<Bill> dsHoaDon;
+        public void hienthiHoaDon()
+        {
+            dgv_DoanhThu.DataSource = dsHoaDon;
+        }
+        private void butThongKe_Click(object sender, EventArgs e)
+        {
+            DateTime ngayBatDau = dtpNgayBD.Value;
+            DateTime ngayKetThuc= dtpNgayKetThuc.Value;
+            if (ngayBatDau > ngayKetThuc)
+            {
+                MessageBox.Show("Ngày bắt đầu không thể lớn hơn ngày kết thúc. Vui lòng chọn lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            List<Bill> dsHoaDonTrongThoiGianThongKe = new List<Bill>();
+            foreach(Bill b in dsHoaDon) 
+            {
+                if(b.m_NgayTao>= ngayBatDau&&b.m_NgayTao<=ngayKetThuc)
+                {
+                    dsHoaDonTrongThoiGianThongKe.Add(b);
+                }
+            }
+            if (dsHoaDonTrongThoiGianThongKe.Count == 0)
+            {
+                MessageBox.Show("Không có hóa đơn trong khoảng thời gian này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Hiển thị danh sách hóa đơn trong DataGridView
+                dgv_DoanhThu.DataSource = dsHoaDonTrongThoiGianThongKe;
+            }
+        }
+
+
+        #endregion
+
+        private void dgv_DoanhThu_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
     }
 }
 

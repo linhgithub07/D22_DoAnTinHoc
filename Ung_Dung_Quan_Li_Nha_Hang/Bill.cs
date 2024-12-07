@@ -6,46 +6,34 @@ using System.Threading.Tasks;
 
 namespace Ung_Dung_Quan_Li_Nha_Hang
 {
-    internal class Bill
+    [Serializable]
+    public class Bill
     {
 
-        private string m_id;
-        private string m_ten;
-        private DateTime m_ngay;
-        private double m_tien;
+        public string m_id { get; set; }
+        public DateTime m_NgayTao { get; set; }
+        public List<ChiTietHoaDon> chitietHoaDon { get; set; }
+        public Bill(string maHoaDon, DateTime ngayTao, List<ChiTietHoaDon> chitietHOADON)
+        {
+            m_id = maHoaDon;
+            m_NgayTao = ngayTao;
+            chitietHoaDon = chitietHoaDon;
+        }
 
-        public string ID
+        public decimal TongTien
         {
-            get { return m_id; }
-            set { m_id = value; }
-        }
-        public string Ten
-        {
-            get { return m_ten; }
-            set { m_ten = value; }
-        }
-        public double Tien
-        {
-            get { return m_tien; }
-            set
+            get
             {
-                m_tien = value;
+                decimal tong = 0;
+                foreach (ChiTietHoaDon chitiet in chitietHoaDon)
+                {
+                    tong += chitiet.thanhTien;
+                }
+                return tong;
             }
+        }
 
-        }
-        public Bill() 
-        {   m_id=string.Empty;
-            m_ten = string.Empty;
-            m_ngay=DateTime.Now;
-            m_tien = 0;
-        }
-        public Bill(string id, string ten, DateTime ngay, double tien)
-        {
-            m_id = id;
-            m_ten = ten;
-            m_ngay = ngay;
-            m_tien = tien;
-        }
+
     }
 
 }

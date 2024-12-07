@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Ung_Dung_Quan_Li_Nha_Hang
 {
     [Serializable]
-    internal class food
+    public class food
     {
         private string f_list;
         private string f_id;

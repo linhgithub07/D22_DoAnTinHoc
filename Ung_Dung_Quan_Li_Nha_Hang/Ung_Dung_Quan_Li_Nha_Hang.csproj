@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BanAn.cs" />
     <Compile Include="Bill.cs" />
+    <Compile Include="ChiTietHoaDon.cs" />
     <Compile Include="food.cs" />
     <Compile Include="formAdmin.cs">
       <SubType>Form</SubType>
