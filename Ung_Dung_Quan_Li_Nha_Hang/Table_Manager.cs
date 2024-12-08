@@ -65,7 +65,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         }
         public void CapNhatDanhSachBan()
         { 
- //cần chỉnh sửa         flpBan.Controls.Clear(); // Xóa các nút cũ trong FlowLayoutPanel               
+            flp_Ban.Controls.Clear(); // Xóa các nút cũ trong FlowLayoutPanel               
 
             foreach (BanAn ban in dsBanAn)
             {
@@ -84,7 +84,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 };
 
                 // Thêm nút vào FlowLayoutPanel
-//cần chỉnh sửa              flpBan.Controls.Add(btnBan);                 
+                flp_Ban.Controls.Add(btnBan);                 
             }
         }
 
