@@ -13,7 +13,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Table_Manager());
         }
     }
 }
