@@ -80,6 +80,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.panel24 = new System.Windows.Forms.Panel();
             this.dgv_Ban = new System.Windows.Forms.DataGridView();
+            this.dgv_TableID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_TableNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel25 = new System.Windows.Forms.Panel();
             this.btnGhiBan = new System.Windows.Forms.Button();
             this.btnXoaBan = new System.Windows.Forms.Button();
@@ -107,9 +110,6 @@
             this.btnXoaTaiKhoan = new System.Windows.Forms.Button();
             this.btnSuaTaiKhoan = new System.Windows.Forms.Button();
             this.btnThemTaiKhoan = new System.Windows.Forms.Button();
-            this.dgv_TableID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgv_TableNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tcMonAn.SuspendLayout();
             this.tabPageDoanhThu.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -339,10 +339,12 @@
             this.cb_DanhMucMonAn.FormattingEnabled = true;
             this.cb_DanhMucMonAn.Items.AddRange(new object[] {
             "Nước",
-            "Chiên",
-            "Xào",
-            "Nướng",
-            "Lẩu"});
+            "Gỏi",
+            "Rau Củ",
+            "Mì",
+            "Cơm",
+            "Mực",
+            "Gà"});
             this.cb_DanhMucMonAn.Location = new System.Drawing.Point(139, 14);
             this.cb_DanhMucMonAn.Name = "cb_DanhMucMonAn";
             this.cb_DanhMucMonAn.Size = new System.Drawing.Size(175, 21);
@@ -692,6 +694,24 @@
             this.dgv_Ban.TabIndex = 0;
             this.dgv_Ban.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_Ban_RowEnter);
             // 
+            // dgv_TableID
+            // 
+            this.dgv_TableID.DataPropertyName = "ID";
+            this.dgv_TableID.HeaderText = "Mã Bàn Ăn";
+            this.dgv_TableID.Name = "dgv_TableID";
+            // 
+            // dgv_TableNumber
+            // 
+            this.dgv_TableNumber.DataPropertyName = "TenBan";
+            this.dgv_TableNumber.HeaderText = "Tên Bàn";
+            this.dgv_TableNumber.Name = "dgv_TableNumber";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "TrangThai";
+            this.Column1.HeaderText = "Trạng Thái";
+            this.Column1.Name = "Column1";
+            // 
             // panel25
             // 
             this.panel25.Controls.Add(this.btnGhiBan);
@@ -979,24 +999,6 @@
             this.btnThemTaiKhoan.TabIndex = 0;
             this.btnThemTaiKhoan.Text = "Thêm";
             this.btnThemTaiKhoan.UseVisualStyleBackColor = true;
-            // 
-            // dgv_TableID
-            // 
-            this.dgv_TableID.DataPropertyName = "ID";
-            this.dgv_TableID.HeaderText = "Mã Bàn Ăn";
-            this.dgv_TableID.Name = "dgv_TableID";
-            // 
-            // dgv_TableNumber
-            // 
-            this.dgv_TableNumber.DataPropertyName = "TenBan";
-            this.dgv_TableNumber.HeaderText = "Tên Bàn";
-            this.dgv_TableNumber.Name = "dgv_TableNumber";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "TrangThai";
-            this.Column1.HeaderText = "Trạng Thái";
-            this.Column1.Name = "Column1";
             // 
             // formAdmin
             // 

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace Ung_Dung_Quan_Li_Nha_Hang
-{
     [Serializable]
     public class BanAn
     {
@@ -27,5 +24,6 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             TenBan = tenban;
             m_trangthai = trangthai;
         }
+    // Danh sách món ăn
+     public List<food> MonAn { get; set; } = new List<food>();
     }
-}

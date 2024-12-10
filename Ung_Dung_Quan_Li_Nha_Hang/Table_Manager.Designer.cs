@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Loại");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("ID");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Tên Món");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Giá");
             this.label2 = new System.Windows.Forms.Label();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -147,22 +143,25 @@
             this.btnThemMonAn.TabIndex = 2;
             this.btnThemMonAn.Text = "Thêm Món";
             this.btnThemMonAn.UseVisualStyleBackColor = true;
+            this.btnThemMonAn.Click += new System.EventHandler(this.btnThemMonAn_Click);
             // 
             // cbb_ShowLoaiMonAn
             // 
             this.cbb_ShowLoaiMonAn.FormattingEnabled = true;
             this.cbb_ShowLoaiMonAn.Items.AddRange(new object[] {
-            "LIST",
+            "Danh sách món ăn",
             "Nước",
-            "Chiên",
-            "Xào",
-            "Nướng",
-            "Lẩu"});
+            "Gỏi",
+            "Rau Củ",
+            "Mì",
+            "Cơm",
+            "Mực",
+            "Gà"});
             this.cbb_ShowLoaiMonAn.Location = new System.Drawing.Point(3, 32);
             this.cbb_ShowLoaiMonAn.Name = "cbb_ShowLoaiMonAn";
             this.cbb_ShowLoaiMonAn.Size = new System.Drawing.Size(242, 21);
             this.cbb_ShowLoaiMonAn.TabIndex = 3;
-            this.cbb_ShowLoaiMonAn.Text = "LIST";
+            this.cbb_ShowLoaiMonAn.Text = "Danh sách món ăn";
             this.cbb_ShowLoaiMonAn.SelectedIndexChanged += new System.EventHandler(this.cbb_ShowLoaiMonAn_SelectedIndexChanged);
             // 
             // panel2
@@ -177,17 +176,12 @@
             // 
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(433, 348);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.SmallIcon;
+            this.listView1.View = System.Windows.Forms.View.List;
             // 
             // menuStrip1
             // 

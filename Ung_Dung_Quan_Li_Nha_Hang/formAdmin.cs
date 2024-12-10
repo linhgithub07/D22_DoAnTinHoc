@@ -161,26 +161,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
         #region MÓN ĂN.
 
-        #region Phần Lưu Món Ăn
-        #region
-        //================ Hàm fix bug save food =================/
-        [Serializable]
-        public class food
-        {
-            public string F_list { get; set; }
-            public string F_id { get; set; }
-            public string F_name { get; set; }
-            public string F_price { get; set; }
-
-            public food(string list, string id, string name, string price)
-            {
-                F_list = list;
-                F_id = id;
-                F_name = name;
-                F_price = price;
-            }
-        }
-        #endregion
+        #region Xử Lý Lưu Món Ăn.
         private void SaveFoodListToFile(string filePath)
         {
             using (FileStream fs = new FileStream(filePath, FileMode.Create))
@@ -229,7 +210,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             string list = cb_DanhMucMonAn.SelectedItem.ToString();
             string id = txb_IDMonAn.Text;
             string name = txb_TenMonAn.Text;
-            string price = txb_GiaMonAn.Text;
+            string price = txb_GiaMonAn.Text + "đ";
             // phần ghi món ăn vào DataGridView
             bool kq = false;
             food f_f = new food(list, id, name, price);

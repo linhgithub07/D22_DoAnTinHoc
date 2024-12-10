@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
     public partial class Table_Manager : Form
     {
         private List<BanAn> dsBanAn = new List<BanAn>();
-        private List<food> fo = new List<food>();
+        private List<food> f = new List<food>();
         public Table_Manager()
         {
             InitializeComponent();
@@ -38,9 +39,9 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
         private void admin_Click(object sender, EventArgs e)
         {
+            this.Hide();
             formAdmin formAdmin = new formAdmin(dsBanAn);
             formAdmin.ButtonAdded += FormAdmin_ButtonAdded;
-            this.Hide();
             formAdmin.ShowDialog();
             this.Show();
             CapNhatDanhSachBan(dsBanAn);
@@ -107,37 +108,32 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             string strFileLocation = "dsBanAn.bin";
+
             if (File.Exists(strFileLocation))
             {
-                using (FileStream readerFileStream = new FileStream(strFileLocation, FileMode.Open, System.IO.FileAccess.Read))
+                try
                 {
-                    dsBanAn = (List<BanAn>)binaryFormatter.Deserialize(readerFileStream);
+                    using (FileStream readerFileStream = new FileStream(strFileLocation, FileMode.Open, FileAccess.Read))
+                    {
+                        dsBanAn = (List<BanAn>)binaryFormatter.Deserialize(readerFileStream);
+                    }
                 }
+                catch (SerializationException)
+                {
+                    MessageBox.Show("File không hợp lệ hoặc cấu trúc dữ liệu đã thay đổi. Vui lòng xóa file cũ và thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dsBanAn = new List<BanAn>(); // Khởi tạo danh sách trống
+                }
+            }
+            else
+            {
+                dsBanAn = new List<BanAn>(); // Khởi tạo danh sách trống nếu file không tồn tại
             }
         }
 
         #endregion
 
         #region Thêm Món Ăn Vào Hóa Đơn
-        #region
-        //======= Hàm fix bug save food ========/
-        [Serializable]
-        public class food
-        {
-            public string F_list { get; set; }
-            public string F_id { get; set; }
-            public string F_name { get; set; }
-            public string F_price { get; set; }
-
-            public food(string list, string id, string name, string price)
-            {
-                F_list = list;
-                F_id = id;
-                F_name = name;
-                F_price = price;
-            }
-        }
-        #endregion
+        //============== xử lý load file nhị phân lên datagirdview ========= 
         private List<food> LoadFoodListFromFile(string filePath)
         {
             List<food> foodList = new List<food>();
@@ -183,89 +179,101 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             // Hiển thị danh sách món ăn vào ListView
             DisplayFoodListInListView(foodList);
         }
-
-        #endregion
-
+        //======= Lọc danh sách từ file nhị phân theo loại món ăn
         private void cbb_ShowLoaiMonAn_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Lấy giá trị được chọn trong ComboBox
-            string selectedCategory = cbb_ShowLoaiMonAn.SelectedItem.ToString();
+            string selectedCategory = cbb_ShowLoaiMonAn.SelectedItem?.ToString();
 
-            // Kiểm tra nếu giá trị được chọn là "Danh sách món ăn" (hoặc bất kỳ điều kiện nào bạn muốn)
-            if (selectedCategory == "Danh sách món ăn")
+            // Kiểm tra nếu chưa chọn giá trị
+            if (string.IsNullOrEmpty(selectedCategory))
             {
-                // Gọi hàm để tải và hiển thị dữ liệu từ file nhị phân vào ListView
-                LoadAndDisplayFoodList("DanhSachMonAn.dat");
+                MessageBox.Show("Chưa chọn danh mục hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Tải danh sách món ăn từ file
+            List<food> foodList = LoadFoodListFromFile("DanhSachMonAn.dat");
+
+            // Lọc danh sách theo loại được chọn
+            List<food> filteredFoodList;
+            switch (selectedCategory)
+            {
+                case "Danh sách món ăn":
+                    // Hiển thị toàn bộ danh sách
+                    DisplayFoodListInListView(foodList);
+                    break;
+
+                case "Nước":
+                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Nước").ToList();
+                    DisplayFoodListInListView(filteredFoodList);
+                    break;
+
+                case "Gỏi":
+                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Gỏi").ToList();
+                    DisplayFoodListInListView(filteredFoodList);
+                    break;
+
+                case "Rau Củ":
+                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Rau Củ").ToList();
+                    DisplayFoodListInListView(filteredFoodList);
+                    break;
+
+                case "Mì":
+                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Mì").ToList();
+                    DisplayFoodListInListView(filteredFoodList);
+                    break;
+
+                case "Cơm":
+                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Cơm").ToList();
+                    DisplayFoodListInListView(filteredFoodList);
+                    break;
+
+                case "Mực":
+                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Mực").ToList();
+                    DisplayFoodListInListView(filteredFoodList);
+                    break;
+
+                case "Gà":
+                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Gà").ToList();
+                    DisplayFoodListInListView(filteredFoodList);
+                    break;
+
+                default:
+                    // Xử lý các trường hợp khác
+                    MessageBox.Show("Danh mục không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+            }
+        }
+        //======= Thêm món ăn vào bàn =============
+        private void btnThemMonAn_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                ListViewItem selectedItem = listView1.SelectedItems[0];
+                string foodName = selectedItem.SubItems[0].Text;
+                string foodId = selectedItem.SubItems[1].Text;
+                string foodPrice = selectedItem.SubItems[2].Text;
+                string foodCategory = "Loại món ăn";
+
+                food newFood = new food(foodName, foodId, foodPrice, foodCategory);
+
+                BanAn currentBan = dsBanAn.FirstOrDefault(ban => ban.TenBan == "Tên bàn hiện tại");
+                if (currentBan != null)
+                {
+                    currentBan.MonAn.Add(newFood);
+                    MessageBox.Show($"Đã thêm món ăn '{foodName}' vào bàn '{currentBan.TenBan}'.", "Thông báo");
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy bàn hiện tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                // Xử lý các trường hợp khác nếu có
-                MessageBox.Show("Chưa chọn danh mục hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn một món ăn để thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        #endregion
     }
 }
-/*
- // Đảm bảo f là biến toàn cục
-private List<food> f = new List<food>();
-
-#region Thêm Món Ăn Vào Hóa Đơn
-
-//================ Hàm fix bug save food =================/
-[Serializable]
-public class food
-{
-    public string F_list { get; set; }
-    public string F_id { get; set; }
-    public string F_name { get; set; }
-    public string F_price { get; set; }
-
-    public food(string list, string id, string name, string price)
-    {
-        F_list = list;
-        F_id = id;
-        F_name = name;
-        F_price = price;
-    }
-}
-#endregion
-
-// Xử lý data từ file
-private void dgv_ShowDanhSachMonAn_CellClick(object sender, DataGridViewCellEventArgs e)
-{
-    pt = e.RowIndex;
-}
-
-// Cập nhật phương thức LoadFoodList để truyền trực tiếp danh sách
-private void LoadFoodList(DataGridView dgv_ShowDanhSachMonAn, List<food> f)
-{
-    dgv_ShowDanhSachMonAn.DataSource = f;  // Không cần chuyển đổi thành mảng
-}
-
-// Nạp danh sách món ăn từ file
-private void LoadFoodListFromFile(string filePath)
-{
-    if (File.Exists(filePath))
-    {
-        using (FileStream fs = new FileStream(filePath, FileMode.Open))
-        {
-            BinaryFormatter formatter = new BinaryFormatter();
-            f = (List<food>)formatter.Deserialize(fs);  // Đảm bảo f là biến toàn cục
-            LoadFoodList(dgv_ShowDanhSachMonAn, f);    // Hiển thị lên DataGridView
-        }
-        MessageBox.Show("Danh sách món ăn đã được tải từ file!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
-    else
-    {
-        MessageBox.Show("File không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-}
-
-// Khi thay đổi loại món ăn, tải lại danh sách
-private void cbb_ShowLoaiMonAn_SelectedIndexChanged(object sender, EventArgs e)
-{
-    LoadFoodList(dgv_ShowDanhSachMonAn, f);  // Hiển thị danh sách đã nạp
-    LoadFoodListFromFile("DanhSachMonAn.dat");  // Nạp lại danh sách từ file
-}
-
- */
