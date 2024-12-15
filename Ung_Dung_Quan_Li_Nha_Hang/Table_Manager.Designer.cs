@@ -38,24 +38,28 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnThemMonAn = new System.Windows.Forms.Button();
             this.cbb_ShowLoaiMonAn = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.admin = new System.Windows.Forms.ToolStripMenuItem();
             this.thongtintaikhoan = new System.Windows.Forms.ToolStripMenuItem();
             this.thongtincanhan = new System.Windows.Forms.ToolStripMenuItem();
             this.dangxuat = new System.Windows.Forms.ToolStripMenuItem();
             this.flp_Ban = new System.Windows.Forms.FlowLayoutPanel();
+            this.dgv_ShowFood = new System.Windows.Forms.DataGridView();
+            this.dgv_danhmuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_ten = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_gia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_XemBill = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ShowFood)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(577, 468);
+            this.label2.Location = new System.Drawing.Point(634, 468);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 13);
             this.label2.TabIndex = 32;
@@ -63,7 +67,7 @@
             // 
             // txtTongTien
             // 
-            this.txtTongTien.Location = new System.Drawing.Point(565, 484);
+            this.txtTongTien.Location = new System.Drawing.Point(622, 484);
             this.txtTongTien.Name = "txtTongTien";
             this.txtTongTien.Size = new System.Drawing.Size(92, 20);
             this.txtTongTien.TabIndex = 31;
@@ -78,7 +82,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(480, 468);
+            this.label1.Location = new System.Drawing.Point(537, 468);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 30;
@@ -99,7 +103,7 @@
             "80%",
             "90%",
             "100%"});
-            this.comboBoxGiamGia.Location = new System.Drawing.Point(461, 484);
+            this.comboBoxGiamGia.Location = new System.Drawing.Point(518, 484);
             this.comboBoxGiamGia.Name = "comboBoxGiamGia";
             this.comboBoxGiamGia.Size = new System.Drawing.Size(88, 21);
             this.comboBoxGiamGia.TabIndex = 28;
@@ -107,7 +111,7 @@
             // 
             // btnThanhToan
             // 
-            this.btnThanhToan.Location = new System.Drawing.Point(680, 448);
+            this.btnThanhToan.Location = new System.Drawing.Point(737, 448);
             this.btnThanhToan.Name = "btnThanhToan";
             this.btnThanhToan.Size = new System.Drawing.Size(88, 76);
             this.btnThanhToan.TabIndex = 25;
@@ -162,26 +166,7 @@
             this.cbb_ShowLoaiMonAn.Size = new System.Drawing.Size(242, 21);
             this.cbb_ShowLoaiMonAn.TabIndex = 3;
             this.cbb_ShowLoaiMonAn.Text = "Danh sách món ăn";
-            this.cbb_ShowLoaiMonAn.SelectedIndexChanged += new System.EventHandler(this.cbb_ShowLoaiMonAn_SelectedIndexChanged);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.listView1);
-            this.panel2.Location = new System.Drawing.Point(377, 90);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(439, 354);
-            this.panel2.TabIndex = 24;
-            // 
-            // listView1
-            // 
-            this.listView1.GridLines = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 3);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(433, 348);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.List;
+            this.cbb_ShowLoaiMonAn.SelectedIndexChanged += new System.EventHandler(this.cbb_ShowLoaiMonAn_SelectedIndexChanged_1);
             // 
             // menuStrip1
             // 
@@ -192,7 +177,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(830, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(849, 24);
             this.menuStrip1.TabIndex = 33;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -233,11 +218,60 @@
             this.flp_Ban.Size = new System.Drawing.Size(362, 494);
             this.flp_Ban.TabIndex = 34;
             // 
+            // dgv_ShowFood
+            // 
+            this.dgv_ShowFood.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ShowFood.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_danhmuc,
+            this.dgv_id,
+            this.dgv_ten,
+            this.dgv_gia});
+            this.dgv_ShowFood.Location = new System.Drawing.Point(380, 90);
+            this.dgv_ShowFood.Name = "dgv_ShowFood";
+            this.dgv_ShowFood.Size = new System.Drawing.Size(465, 352);
+            this.dgv_ShowFood.TabIndex = 35;
+            // 
+            // dgv_danhmuc
+            // 
+            this.dgv_danhmuc.DataPropertyName = "F_list";
+            this.dgv_danhmuc.HeaderText = "Danh Mục";
+            this.dgv_danhmuc.Name = "dgv_danhmuc";
+            // 
+            // dgv_id
+            // 
+            this.dgv_id.DataPropertyName = "F_id";
+            this.dgv_id.HeaderText = "ID";
+            this.dgv_id.Name = "dgv_id";
+            // 
+            // dgv_ten
+            // 
+            this.dgv_ten.DataPropertyName = "F_name";
+            this.dgv_ten.HeaderText = "Tên Món Ăn";
+            this.dgv_ten.Name = "dgv_ten";
+            // 
+            // dgv_gia
+            // 
+            this.dgv_gia.DataPropertyName = "F_price";
+            this.dgv_gia.HeaderText = "Giá Món Ăn";
+            this.dgv_gia.Name = "dgv_gia";
+            // 
+            // btn_XemBill
+            // 
+            this.btn_XemBill.Location = new System.Drawing.Point(405, 448);
+            this.btn_XemBill.Name = "btn_XemBill";
+            this.btn_XemBill.Size = new System.Drawing.Size(88, 76);
+            this.btn_XemBill.TabIndex = 36;
+            this.btn_XemBill.Text = "Xem Bill";
+            this.btn_XemBill.UseVisualStyleBackColor = true;
+            this.btn_XemBill.Click += new System.EventHandler(this.btn_XemBill_Click);
+            // 
             // Table_Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(830, 531);
+            this.ClientSize = new System.Drawing.Size(849, 531);
+            this.Controls.Add(this.btn_XemBill);
+            this.Controls.Add(this.dgv_ShowFood);
             this.Controls.Add(this.flp_Ban);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.label2);
@@ -246,16 +280,15 @@
             this.Controls.Add(this.comboBoxGiamGia);
             this.Controls.Add(this.btnThanhToan);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.Name = "Table_Manager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lí Nhà Hàng";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ShowFood)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,8 +305,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnThemMonAn;
         private System.Windows.Forms.ComboBox cbb_ShowLoaiMonAn;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem admin;
         private System.Windows.Forms.ToolStripMenuItem thongtintaikhoan;
@@ -282,5 +313,11 @@
         private System.Windows.Forms.FlowLayoutPanel flpBan;
         private System.Windows.Forms.FlowLayoutPanel flp_Ban;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgv_ShowFood;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_danhmuc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_ten;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgv_gia;
+        private System.Windows.Forms.Button btn_XemBill;
     }
 }

@@ -22,6 +22,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             InitializeComponent();
             LoadFile();
             CapNhatDanhSachBan();
+            LoadDataToDataGridView();
         }
 
         private void dangxuat_Click(object sender, EventArgs e)
@@ -129,58 +130,40 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 dsBanAn = new List<BanAn>(); // Khởi tạo danh sách trống nếu file không tồn tại
             }
         }
-
         #endregion
 
-        #region Thêm Món Ăn Vào Hóa Đơn
-        //============== xử lý load file nhị phân lên datagirdview ========= 
-        private List<food> LoadFoodListFromFile(string filePath)
+        //===================================================================
+
+        #region xử lý hiển thị danh sách món ăn
+        private void LoadDataToDataGridView()
         {
-            List<food> foodList = new List<food>();
+            string filePath = "DanhSachMonAn.dat"; // Đường dẫn tới tệp nhị phân
+            List<food> people = ReadBinaryFile(filePath);
 
-            if (File.Exists(filePath))
-            {
-                using (FileStream fs = new FileStream(filePath, FileMode.Open))
-                {
-                    BinaryFormatter formatter = new BinaryFormatter();
-                    foodList = (List<food>)formatter.Deserialize(fs);
-                    DisplayFoodListInListView(foodList);
-                }
-            }
-            else
-            {
-                MessageBox.Show("File không tồn tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            return foodList;
+            // Gắn dữ liệu vào DataGridView
+            dgv_ShowFood.DataSource = people;
         }
-        private void DisplayFoodListInListView(List<food> foodList)
+
+        private List<food> ReadBinaryFile(string filePath)
         {
-            // Xóa dữ liệu hiện tại trong ListView
-            listView1.Items.Clear();
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException("Tệp không tồn tại!");
 
-            // Lặp qua danh sách món ăn và thêm vào ListView
-            foreach (food f in foodList)
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                // Tạo ListViewItem cho mỗi món ăn
-                ListViewItem item = new ListViewItem(f.F_name);
-                item.SubItems.Add(f.F_id);
-                item.SubItems.Add(f.F_price);
-
-                // Thêm item vào ListView
-                listView1.Items.Add(item);
+                BinaryFormatter formatter = new BinaryFormatter();
+                return (List<food>)formatter.Deserialize(fs);
             }
         }
-        private void LoadAndDisplayFoodList(string filePath)
+        // Phương thức hiển thị danh sách lên DataGridView
+        private void DisplayFoodListInDataGridView(List<food> foodList)
         {
-            // Đọc danh sách món ăn từ file nhị phân
-            List<food> foodList = LoadFoodListFromFile(filePath);
-
-            // Hiển thị danh sách món ăn vào ListView
-            DisplayFoodListInListView(foodList);
+            // Gán danh sách làm nguồn dữ liệu cho DataGridView
+            dgv_ShowFood.DataSource = null; // Xóa dữ liệu cũ (nếu có)
+            dgv_ShowFood.DataSource = foodList; // Gán danh sách mới
         }
-        //======= Lọc danh sách từ file nhị phân theo loại món ăn
-        private void cbb_ShowLoaiMonAn_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void cbb_ShowLoaiMonAn_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             // Lấy giá trị được chọn trong ComboBox
             string selectedCategory = cbb_ShowLoaiMonAn.SelectedItem?.ToString();
@@ -193,7 +176,16 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             }
 
             // Tải danh sách món ăn từ file
-            List<food> foodList = LoadFoodListFromFile("DanhSachMonAn.dat");
+            List<food> foodList;
+            try
+            {
+                foodList = ReadBinaryFile("DanhSachMonAn.dat");
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Lọc danh sách theo loại được chọn
             List<food> filteredFoodList;
@@ -201,42 +193,18 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             {
                 case "Danh sách món ăn":
                     // Hiển thị toàn bộ danh sách
-                    DisplayFoodListInListView(foodList);
+                    DisplayFoodListInDataGridView(foodList);
                     break;
 
                 case "Nước":
-                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Nước").ToList();
-                    DisplayFoodListInListView(filteredFoodList);
-                    break;
-
                 case "Gỏi":
-                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Gỏi").ToList();
-                    DisplayFoodListInListView(filteredFoodList);
-                    break;
-
                 case "Rau Củ":
-                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Rau Củ").ToList();
-                    DisplayFoodListInListView(filteredFoodList);
-                    break;
-
                 case "Mì":
-                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Mì").ToList();
-                    DisplayFoodListInListView(filteredFoodList);
-                    break;
-
                 case "Cơm":
-                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Cơm").ToList();
-                    DisplayFoodListInListView(filteredFoodList);
-                    break;
-
                 case "Mực":
-                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Mực").ToList();
-                    DisplayFoodListInListView(filteredFoodList);
-                    break;
-
                 case "Gà":
-                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == "Gà").ToList();
-                    DisplayFoodListInListView(filteredFoodList);
+                    filteredFoodList = foodList.Where(foodItem => foodItem.F_list == selectedCategory).ToList();
+                    DisplayFoodListInDataGridView(filteredFoodList);
                     break;
 
                 default:
@@ -245,35 +213,15 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                     break;
             }
         }
-        //======= Thêm món ăn vào bàn =============
+        #endregion
         private void btnThemMonAn_Click(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count > 0)
-            {
-                ListViewItem selectedItem = listView1.SelectedItems[0];
-                string foodName = selectedItem.SubItems[0].Text;
-                string foodId = selectedItem.SubItems[1].Text;
-                string foodPrice = selectedItem.SubItems[2].Text;
-                string foodCategory = "Loại món ăn";
-
-                food newFood = new food(foodName, foodId, foodPrice, foodCategory);
-
-                BanAn currentBan = dsBanAn.FirstOrDefault(ban => ban.TenBan == "Tên bàn hiện tại");
-                if (currentBan != null)
-                {
-                    currentBan.MonAn.Add(newFood);
-                    MessageBox.Show($"Đã thêm món ăn '{foodName}' vào bàn '{currentBan.TenBan}'.", "Thông báo");
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy bàn hiện tại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn một món ăn để thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
         }
-        #endregion
+
+        private void btn_XemBill_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
