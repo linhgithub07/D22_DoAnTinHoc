@@ -17,10 +17,12 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
     public partial class Table_Manager : Form
     {
         private List<BanAn> dsBanAn = new List<BanAn>();
+        private List<food> dsMonAn= new List<food>();
+        private List<Bill> dsHoaDon = new List<Bill>();
         public Table_Manager()
         {
             InitializeComponent();
-            LoadFile();
+            LoadFileBanAn();
             CapNhatDanhSachBan();
         }
 
@@ -31,7 +33,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
 
         private void thongtincanhan_Click(object sender, EventArgs e)
         {
-            formThongTinCaNhan f_thongtin= new formThongTinCaNhan();
+            formThongTinCaNhan f_thongtin = new formThongTinCaNhan();
             this.Hide();
             f_thongtin.ShowDialog();
             this.Show();
@@ -58,13 +60,25 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         }
         public void CapNhatDanhSachBan(List<BanAn> danhSachBan)
         {
-            if(dsBanAn==null)
+            if (dsBanAn == null)
             {
                 MessageBox.Show("Danh sách bàn không có dữ liệu!");
                 return;
             }
             dsBanAn = danhSachBan; // Cập nhật danh sách bàn từ form khác
             CapNhatDanhSachBan();  // Cập nhật giao diện với danh sách mới
+        }
+        public void CapNhatDanhSachBanHandler(BanAn banAn)
+        {
+            // Cập nhật trạng thái của bàn trong danh sách
+            var ban = dsBanAn.FirstOrDefault(b => b.ID == banAn.ID);
+            if (ban != null)
+            {
+                ban.TrangThai = banAn.TrangThai;
+            }
+
+            // Gọi phương thức cập nhật giao diện
+            CapNhatDanhSachBan(dsBanAn);  // Cập nhật lại giao diện
         }
         public void CapNhatDanhSachBan()
         {
@@ -77,23 +91,63 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
                 btnBan.Text = ban.Tenban;
                 btnBan.Width = 100;
                 btnBan.Height = 50;
-                
+                btnBan.Tag = ban;
+
                 // Tự cập nhật lại màu:
                 updateMauBanAn(ban, btnBan);
                 // Gắn sự kiện khi nhấn vào nút
                 btnBan.Click += (s, e) =>
                 {
-                    MessageBox.Show($"ID: {ban.ID}\nTên bàn: {ban.Tenban}\nTrạng thái: {ban.TrangThai} ", "Thông tin bàn");
+                    BanAn banAn = (BanAn)btnBan.Tag;
+
+                    if (banAn == null || string.IsNullOrEmpty(banAn.ID))
+                    {
+                        MessageBox.Show("Bàn không hợp lệ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Hiển thị hộp thoại với 2 lựa chọn: Xem Hóa Đơn và OK
+                    DialogResult dialogResult = MessageBox.Show("Bạn Muốn Tạo Hóa Đơn?", "Hóa Đơn", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        // Nếu người dùng chọn "Yes", mở Form Hóa Đơn
+                        OpenHoaDonForm(banAn);  // Mở form hóa đơn và truyền bàn hiện tại
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        // Nếu người dùng chọn "No", hiển thị thông tin bàn
+                        ShowBanInfo(banAn);  // Hiển thị thông tin về bàn
+                    }
+                    else
+                    {
+                        // Nếu người dùng chọn "Cancel" hoặc đóng hộp thoại, không làm gì
+                        return;
+                    }
                 };
 
                 // Thêm nút vào FlowLayoutPanel
                 flpBan.Controls.Add(btnBan);
             }
         }
+        private void OpenHoaDonForm(BanAn banAn)
+        {
+            // Tạo một form hóa đơn mới (ví dụ: FormHoaDon)
+            FormHoaDon formHoaDon = new FormHoaDon(banAn);
+            formHoaDon.BanUpdated += CapNhatDanhSachBanHandler;
 
+            this.Hide();
+            formHoaDon.ShowDialog();
+            this.Show();
+        }
+        private void ShowBanInfo(BanAn banAn)
+        {
+            string thongTinBan = $"ID: {banAn.ID}\nTên bàn: {banAn.Tenban}\nTrạng thái: {banAn.TrangThai}";
+            MessageBox.Show(thongTinBan, "Thông tin Bàn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        
         private void updateMauBanAn(BanAn ban, Button btnBan)
         {
-            if(ban.TrangThai=="Đã đặt")
+            if (ban.TrangThai == "Đã đặt")
             {
                 btnBan.BackColor = Color.Red;
                 btnBan.ForeColor = Color.White;
@@ -105,7 +159,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             }
         }
 
-        private void LoadFile()
+        private void LoadFileBanAn()
         {
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             string strFileLocation = "dsBanAn.bin";
@@ -119,31 +173,6 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         }
 
         #endregion
-
-        #region Phần oder
-
-        private List<Bill> dsHoaDon;
-        private void luuHoaDon(string filePath, List<Bill> danhSachHoaDon)
-        {
-            using (FileStream fs = new FileStream(filePath, FileMode.Create))
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(fs, danhSachHoaDon);
-            }
-        }
-
-        private void loadHoaDon()
-        {
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
-            string strFileLocation = "dsHoaDon.bin";
-            if (File.Exists(strFileLocation))
-            {
-                using (FileStream readerFileStream = new FileStream(strFileLocation, FileMode.Open, System.IO.FileAccess.Read))
-                {
-                    dsHoaDon = (List<Bill>)binaryFormatter.Deserialize(readerFileStream);
-                }
-            }
-        }
-        #endregion
+        
     }
 }

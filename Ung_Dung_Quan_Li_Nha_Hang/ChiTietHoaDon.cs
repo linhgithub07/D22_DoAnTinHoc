@@ -17,9 +17,19 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
             soLuong = SoLuong;
         }
 
-        public decimal thanhTien
+        public double thanhTien
         {
-            get { return soLuong*(decimal.Parse(monAn.F_price)); }
+            get
+            {
+                if (monAn.F_price >= 0)
+                {
+                    return soLuong * monAn.F_price;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
 

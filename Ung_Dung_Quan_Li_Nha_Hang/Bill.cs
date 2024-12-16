@@ -17,23 +17,16 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         {
             m_id = maHoaDon;
             m_NgayTao = ngayTao;
-            chitietHoaDon = chitietHoaDon;
+            chitietHoaDon = chitietHOADON ?? new List<ChiTietHoaDon>();
         }
 
-        public decimal TongTien
+        public double TongTien
         {
             get
             {
-                decimal tong = 0;
-                foreach (ChiTietHoaDon chitiet in chitietHoaDon)
-                {
-                    tong += chitiet.thanhTien;
-                }
-                return tong;
+                return chitietHoaDon.Sum(ct => ct.thanhTien);
             }
         }
-
-
     }
 
 }

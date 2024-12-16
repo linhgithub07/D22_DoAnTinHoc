@@ -36,12 +36,13 @@
             this.lb_matkhau = new System.Windows.Forms.Label();
             this.lb_tenDN = new System.Windows.Forms.Label();
             this.txBox_dangNhap = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(257, 171);
+            this.label1.Location = new System.Drawing.Point(133, 120);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 13);
@@ -49,17 +50,17 @@
             // 
             // butTaoTK
             // 
-            this.butTaoTK.Location = new System.Drawing.Point(316, 189);
+            this.butTaoTK.Location = new System.Drawing.Point(111, 167);
             this.butTaoTK.Name = "butTaoTK";
             this.butTaoTK.Size = new System.Drawing.Size(75, 23);
             this.butTaoTK.TabIndex = 13;
-            this.butTaoTK.Text = "DangKi";
+            this.butTaoTK.Text = "Đăng Kí";
             this.butTaoTK.UseVisualStyleBackColor = true;
             this.butTaoTK.Click += new System.EventHandler(this.butTaoTK_Click);
             // 
             // but_thoat
             // 
-            this.but_thoat.Location = new System.Drawing.Point(397, 189);
+            this.but_thoat.Location = new System.Drawing.Point(273, 138);
             this.but_thoat.Name = "but_thoat";
             this.but_thoat.Size = new System.Drawing.Size(75, 23);
             this.but_thoat.TabIndex = 12;
@@ -69,7 +70,7 @@
             // 
             // but_dangNhap
             // 
-            this.but_dangNhap.Location = new System.Drawing.Point(235, 189);
+            this.but_dangNhap.Location = new System.Drawing.Point(111, 138);
             this.but_dangNhap.Name = "but_dangNhap";
             this.but_dangNhap.Size = new System.Drawing.Size(75, 23);
             this.but_dangNhap.TabIndex = 11;
@@ -79,7 +80,7 @@
             // 
             // txBox_matKhau
             // 
-            this.txBox_matKhau.Location = new System.Drawing.Point(235, 152);
+            this.txBox_matKhau.Location = new System.Drawing.Point(111, 101);
             this.txBox_matKhau.Name = "txBox_matKhau";
             this.txBox_matKhau.PasswordChar = '*';
             this.txBox_matKhau.Size = new System.Drawing.Size(236, 20);
@@ -89,7 +90,7 @@
             // lb_matkhau
             // 
             this.lb_matkhau.AutoSize = true;
-            this.lb_matkhau.Location = new System.Drawing.Point(129, 155);
+            this.lb_matkhau.Location = new System.Drawing.Point(5, 104);
             this.lb_matkhau.Name = "lb_matkhau";
             this.lb_matkhau.Size = new System.Drawing.Size(53, 13);
             this.lb_matkhau.TabIndex = 9;
@@ -98,7 +99,7 @@
             // lb_tenDN
             // 
             this.lb_tenDN.AutoSize = true;
-            this.lb_tenDN.Location = new System.Drawing.Point(129, 120);
+            this.lb_tenDN.Location = new System.Drawing.Point(5, 69);
             this.lb_tenDN.Name = "lb_tenDN";
             this.lb_tenDN.Size = new System.Drawing.Size(84, 13);
             this.lb_tenDN.TabIndex = 8;
@@ -106,16 +107,30 @@
             // 
             // txBox_dangNhap
             // 
-            this.txBox_dangNhap.Location = new System.Drawing.Point(235, 117);
+            this.txBox_dangNhap.Location = new System.Drawing.Point(111, 66);
             this.txBox_dangNhap.Name = "txBox_dangNhap";
             this.txBox_dangNhap.Size = new System.Drawing.Size(236, 20);
             this.txBox_dangNhap.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.SystemColors.Control;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.label2.Location = new System.Drawing.Point(79, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(190, 34);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Quản Lý Nhà Hàng ";
+            this.label2.UseMnemonic = false;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(361, 198);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.butTaoTK);
             this.Controls.Add(this.but_thoat);
             this.Controls.Add(this.but_dangNhap);
@@ -143,6 +158,7 @@
         private System.Windows.Forms.Label lb_matkhau;
         private System.Windows.Forms.Label lb_tenDN;
         private System.Windows.Forms.TextBox txBox_dangNhap;
+        private System.Windows.Forms.Label label2;
     }
 }
 

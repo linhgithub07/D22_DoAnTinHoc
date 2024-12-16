@@ -31,7 +31,7 @@ namespace Ung_Dung_Quan_Li_Nha_Hang
         {
             m_id_ban=string.Empty;
             m_tenban=string.Empty;
-            m_trangthai = "trong";
+            m_trangthai = "Trống";
         }
         public BanAn(string id_ban, string tenban, string trangthai)
         {
